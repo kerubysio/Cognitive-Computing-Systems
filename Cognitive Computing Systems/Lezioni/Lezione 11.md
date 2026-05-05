@@ -1,6 +1,6 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
 DATA: 28/04/2026
-FONTE: capitolo 15.01 e successivi
+FONTE: capitolo 15.01 e 15.02
 
 ---
 

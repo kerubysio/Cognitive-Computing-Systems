@@ -8,15 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d06711f6ba308fb6",
+            "id": "9985e2fe04f6fd10",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428144951.png"
+                "file": "Cognitive Computing Systems/Lezioni/Lezione 12.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260428144951"
+              "icon": "lucide-file",
+              "title": "Lezione 12"
             }
           }
         ]
@@ -76,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "5e96368d20543c8a",
@@ -184,26 +187,30 @@
       "bases:Create new base": false
     }
   },
-  "active": "3e5a10602b9d5f67",
+  "active": "9985e2fe04f6fd10",
   "lastOpenFiles": [
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428150319.png",
-    "Cognitive Computing Systems (6 CFU).md",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11",
+    "Pasted image 20260505162358.png",
+    "Pasted image 20260505162357.png",
+    "Pasted image 20260505162356 1.png",
+    "Pasted image 20260505162356.png",
+    "Pasted image 20260505162144.png",
+    "Pasted image 20260505162141.png",
+    "Pasted image 20260505162057.png",
+    "Pasted image 20260505162056.png",
+    "Pasted image 20260505162055.png",
+    "Pasted image 20260505162034.png",
+    "Pasted image 20260505162033.png",
+    "Cognitive Computing Systems/Lezioni/Lezione 12.md",
+    "Cognitive Computing Systems/Cognitive Computing Systems (6 CFU).md",
+    "Cognitive Computing Systems/README.md",
+    "Cognitive Computing Systems/Immagini/Img - Lezione 12",
+    "Img - Lezione 11",
+    "Cognitive Computing Systems/README 1.md",
     "Cognitive Computing Systems/Lezioni/Lezione 11.md",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428160207.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428160203.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428160026.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428155721.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428155257.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428155255.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428155048.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428155046.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428152114.png",
-    "Cognitive Computing Systems/Immagini/Img - Lezione 11/Pasted image 20260428152112.png",
+    "Cognitive Computing Systems/Immagini/Img - Lezione 11",
     "Cognitive Computing Systems/Lezioni/Lezione 10.md",
     "Cognitive Computing Systems/Lezioni/Lezione 9 - Python.md",
     "Cognitive Computing Systems/Lezioni/Lezione 8 - Seminario sul Quantum Computing.md",
-    "Cognitive Computing Systems/README.md",
     "Cognitive Computing Systems/Lezioni/Lezione 7.md",
     "Cognitive Computing Systems/Lezioni/Lezione 6.md",
     "Cognitive Computing Systems/Lezioni/Lezione 5.md",
@@ -225,12 +232,8 @@
     "ORGANIZZAZIONE/Architettura dei Sistemi Digitali (6 CFU).md",
     "ORGANIZZAZIONE/Algorithms, Data Structures and Machine Learning (6 CFU).md",
     "ORGANIZZAZIONE",
-    "ASD/OneDrive_1_4-13-2026.zip",
     "Cognitive Computing Systems/Lezioni/Lezione 4.md",
-    "Network and Cloud Infrastructures/APPUNTI NCIs Giorgio Ventre (completo).pdf",
-    "README.md",
     "ASDi/appunti/Informazioni utili.md",
-    "test.md",
-    "Benvenuto.md"
+    "test.md"
   ]
 }
