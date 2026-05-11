@@ -98,14 +98,12 @@ L'architettura mostrata dettaglia il flusso di elaborazione completo per la gene
     
 - **Retrieve**: il sistema interroga il corpus per estrarre i segmenti di testo (answer units) più pertinenti alla domanda.
     
-
 **Final Merger and Ranking**: Le informazioni recuperate vengono raffinate per produrre il risultato ottimale.
 
 - **Rank**: utilizza modelli di apprendimento automatico per riordinare le risposte candidate in base alla loro rilevanza effettiva.
     
 - **Pre-defined Responses**: se la domanda corrisponde a una casistica standard, il sistema può attingere direttamente a risposte già memorizzate.
     
-
 **Answer & Confidence** Il risultato finale viene consegnato all'utente insieme a un punteggio di confidenza. Questo valore indica quanto il sistema sia sicuro della correttezza della risposta in base alle evidenze raccolte e analizzate durante l'intero processo.
 
 ![[Pasted image 20260403191711.png]]
@@ -122,8 +120,9 @@ L'architettura completa integra le capacità di elaborazione profonda con un liv
     
 - **Language Translator**: gestisce la traduzione automatica per operare in ambienti multilingua.
     
-
 A livello di pipeline interna, il sistema mantiene la distinzione tra il percorso rapido delle **Pre-defined Responses** (risposte pre-configurate) e il percorso analitico di **Hypothesis Generation and Scoring**. Quest'ultimo utilizza il processo di **Document Conversion** per alimentare costantemente il **Corpus** con nuovi documenti (Docs), garantendo che la fase di **Retrieve** possa attingere a una base di conoscenza sempre aggiornata. Il modulo di **Final Merger and Ranking** assicura infine che la risposta erogata sia quella statisticamente più solida tra tutte le ipotesi generate.
+
+---
 
 ![[Pasted image 20260403192005.png]]
 L'evoluzione dall'architettura monolitica **DeepQA** verso i sistemi di **Cognitive Computing** moderni ha portato alla creazione di una serie di **microservizi** e strumenti robusti. Questa nuova struttura modulare separa nettamente le capacità di percezione dalle funzioni decisionali.

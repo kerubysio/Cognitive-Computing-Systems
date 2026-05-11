@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "Lezione 2"
             }
+          },
+          {
+            "id": "c0d20013809d3d66",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cognitive Computing Systems/Lezioni/Lezione 3 - 4.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 3 - 4"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -95,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "IL PIANO.md",
+                "file": "Cognitive Computing Systems/Lezioni/Lezione 3 - 4.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +120,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Riferimenti a IL PIANO"
+              "title": "Backlinks for Lezione 3 - 4"
             }
           },
           {
@@ -187,10 +202,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "27de66a9298b715d",
+  "active": "c0d20013809d3d66",
   "lastOpenFiles": [
-    "Cognitive Computing Systems/Lezioni/Lezione 1.md",
     "Cognitive Computing Systems/Lezioni/Lezione 2.md",
+    "Cognitive Computing Systems/Lezioni/Lezione 3 - 4.md",
+    "Cognitive Computing Systems/Lezioni/Lezione 1.md",
     "Cognitive Computing Systems/Lezioni/Lezione 13.md",
     "Cognitive Computing Systems/Lezioni/Lezione 12.md",
     "Lezione.md",
@@ -218,7 +234,6 @@
     "Cognitive Computing Systems/Lezioni/Lezione 7.md",
     "Cognitive Computing Systems/Lezioni/Lezione 6.md",
     "Cognitive Computing Systems/Lezioni/Lezione 5.md",
-    "Cognitive Computing Systems/Lezioni/Lezione 3 - 4.md",
     "intro-to-python-for-computer-science-and-data-science-preface.pdf.md",
     "intro-to-python-for-computer-science-and-data-science-preface.pdf",
     "test.txt",

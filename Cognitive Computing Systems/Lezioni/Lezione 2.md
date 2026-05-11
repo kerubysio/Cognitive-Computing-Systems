@@ -8,12 +8,15 @@ FONTE: L7 DEEPQA ARCHITECTURE 24-3-2024 -1.pdf
 
 ![[Pasted image 20260402183258.png]]
 
-Vediamo adesso tre fattori elementi che ci hanno portato ad avere l'esigenza di un nuovo paradigma di programmazione, ossia quello cognitivo.
+Vediamo adesso tre elementi che ci hanno portato ad avere l'esigenza di un nuovo paradigma di programmazione, ossia quello cognitivo.
+Primo: Big Data
 
 ![[Pasted image 20260402183432.png]]
 
+Secondo: Migliorare l'interazione tra uomo e macchina
 ![[Pasted image 20260402183502.png]]
 
+Terzo: I sistemi cognitivi apprendono similmente a come fa un essere umano
 ![[Pasted image 20260402183559.png]]
 
 ![[Pasted image 20260402183631.png]]
@@ -42,9 +45,12 @@ Il successo di Watson è stato reso possibile dall'architettura **DeepQA**, una 
 
 ![[Pasted image 20260402185733.png]]
 
-L'architettura **DeepQA** rivoluziona il concetto di risposta automatica trasformandolo da una semplice ricerca lineare in un complesso processo di generazione e valutazione di ipotesi massicciamente parallelizzato. Invece di cercare una singola "parola chiave" che porti a un'unica risposta, il sistema affronta l'incertezza del linguaggio naturale attraverso tre pilastri computazionali. In primo luogo, non si limita a un'unica analisi del testo, ma persegue contemporaneamente **molteplici interpretazioni della domanda**, riconoscendo che una frase può nascondere diversi significati o sfumature semantiche.
+L'architettura **DeepQA** rivoluziona il concetto di risposta automatica trasformandolo da una semplice ricerca lineare in un complesso processo di generazione e valutazione di ipotesi massicciamente parallelizzato. Invece di cercare una singola "parola chiave" che porti a un'unica risposta, il sistema affronta l'incertezza del linguaggio naturale attraverso tre pilastri computazionali.
 
-Sulla base di queste diverse interpretazioni, il sistema procede a **generare un ampio spettro di risposte o ipotesi plausibili**. Questo passaggio non è selettivo, ma inclusivo: l'obiettivo è esplorare quante più possibilità il corpus di dati permetta. Una volta generate le ipotesi, la fase critica consiste nel **raccogliere e valutare prove concorrenti** per ciascuna di esse. Ogni prova viene analizzata per determinare se supporti o confuti l'ipotesi specifica, permettendo al sistema di sviluppare un livello di fiducia differenziato. In sintesi, DeepQA non "trova" la risposta, ma costruisce statisticamente la credibilità di diverse opzioni per selezionare quella con il supporto probatorio più solido.
+In primo luogo, non si limita a un'unica analisi del testo, ma persegue contemporaneamente **molteplici interpretazioni della domanda**, riconoscendo che una frase può nascondere diversi significati o sfumature semantiche. Sulla base di queste diverse interpretazioni, il sistema procede a **generare un ampio spettro di risposte o ipotesi plausibili**. Questo passaggio non è selettivo, ma inclusivo: l'obiettivo è esplorare quante più possibilità il corpus di dati permetta.
+Una volta generate le ipotesi, la fase critica consiste nel **raccogliere e valutare prove concorrenti** per ciascuna di esse. Ogni prova viene analizzata per determinare se supporti o confuti l'ipotesi specifica, permettendo al sistema di sviluppare un livello di fiducia differenziato.
+
+In sintesi, DeepQA non "trova" la risposta, ma costruisce statisticamente la credibilità di diverse opzioni per selezionare quella con il supporto statistico più solido.
 
 ![[Pasted image 20260402185846.png]]
 
@@ -67,23 +73,22 @@ L'implementazione di questi obiettivi avviene tramite l'architettura **DeepQA**,
 
 ![[Pasted image 20260402185958.png]]
 
-Il confronto tra l'utilizzo di un **Motore di Ricerca (Search Engine)** e un **Sistema di Risposta Esperto (Expert Q&A)** evidenzia un cambio di paradigma nel modo in cui un decisore umano ottiene informazioni per compiere scelte consapevoli. In un sistema basato sulla ricerca tradizionale, il carico cognitivo grava quasi interamente sull'utente: il decisore deve distillare la propria domanda in poche parole chiave, leggere manualmente una lista di documenti (spesso ordinati per popolarità e non per pertinenza specifica), estrarre le risposte e analizzare le prove da solo. Il motore di ricerca è quindi uno strumento passivo che si limita a trovare documenti contenenti i termini richiesti.
+Il confronto tra l'utilizzo di un **Motore di Ricerca (Search Engine)** e un **Sistema di Risposta Esperto (Expert Q&A)** evidenzia un cambio di paradigma nel modo in cui un decisore umano ottiene informazioni per compiere scelte consapevoli. In un sistema basato sulla ricerca tradizionale, infatti, il carico cognitivo grava quasi interamente sull'utente che quindi deve formulare la propria domanda in poche parole chiave, leggere manualmente una lista di documenti (spesso ordinati per popolarità e non per pertinenza specifica), estrarre le risposte e analizzare le prove da solo. Il motore di ricerca è quindi uno strumento passivo che si limita a trovare documenti contenenti i termini richiesti.
 
 Al contrario, un **sistema esperto** (come Watson) inverte questa dinamica agendo come un collaboratore attivo che comprende il linguaggio naturale. Il decisore pone la domanda in modo completo e il sistema si occupa di comprenderne il contesto, generare autonomamente possibili risposte, analizzare le prove a sostegno di ciascuna e calcolare un grado di fiducia (confidence). L'utente riceve non una lista di documenti, ma una risposta diretta accompagnata dalle prove e dal livello di affidabilità calcolato. Questo approccio riduce drasticamente il tempo di analisi e permette all'esperto umano di concentrarsi sulla valutazione finale del suggerimento, spostando l'intelligenza dal semplice "recupero dati" al "ragionamento basato sulle evidenze".
 
 ![[Pasted image 20260402190135.png]]
 
-![[Pasted image 20260402190153.png]]
+---
 
-L'architettura **DeepQA** si distingue per la sua natura flessibile e modulare, progettata per integrare una vasta gamma di tecnologie di intelligenza artificiale, tra cui l'apprendimento automatico, l'elaborazione del linguaggio naturale (NLP) e il ragionamento logico. La caratteristica distintiva di questo sistema è la sua capacità di generare e valutare ipotesi in parallelo: ogni componente del sistema aggiunge una possibile interpretazione della domanda o una potenziale risposta, fornendo al contempo le evidenze che ne giustificano la correttezza. Questo approccio non cerca la "risposta giusta" tramite una singola funzione, ma costruisce un consenso probatorio attraverso molteplici analisi indipendenti.
+![[Pasted image 20260402190153.png]]
 
 Dal punto di vista implementativo, DeepQA si basa sul framework **UIMA (Unstructured Information Management Architecture)**. UIMA è uno standard aperto progettato specificamente per gestire l'interoperabilità tra diversi strumenti di analisi di contenuti non strutturati (testi, audio, video). Grazie a questo framework, DeepQA può scalare orizzontalmente, permettendo di analizzare enormi quantità di dati in frazioni di secondo. La struttura a pipeline di UIMA consente a diversi algoritmi di "annotare" il testo in successione, arricchendo progressivamente la comprensione del sistema fino alla formulazione della risposta finale con il relativo grado di confidenza.
 
 ![[Pasted image 20260402190230.png]]
 
 L'architettura **DeepQA** opera come un sistema massicciamente parallelo e probabilistico basato sulle evidenze. Il suo funzionamento si articola in una serie di fasi sequenziali che trasformano una domanda in una risposta motivata. Il processo inizia con la **Question Analysis**, dove il sistema identifica il tipo di domanda e il focus, seguita dalla **Decomposition**, che spezza quesiti complessi in sottoproblemi più semplici. Successivamente, la fase di **Hypothesis Generation** (o Candidate Answer Generation) produce centinaia di possibili risposte candidate attingendo a fonti eterogenee, sia strutturate (database, ontologie) che non strutturate (testi enciclopedici, articoli).
-
-Il cuore del sistema risiede nella **Hypothesis and Evidence Scoring**. Per ogni risposta candidata, vengono attivati numerosi algoritmi indipendenti che cercano "prove" a supporto o a confutazione. Questo processo non è binario: ogni algoritmo assegna un punteggio basato su diverse prospettive (semantica, temporale, geografica, ecc.). Nella fase finale di **Synthesis**, tutti i punteggi vengono combinati e pesati attraverso modelli di apprendimento automatico precedentemente addestrati (**Learned Models**). Il risultato è una lista di risposte classificate (**Final Confidence Merging & Ranking**), dove la risposta vincente è quella che ha accumulato il supporto probatorio più forte e coerente, espressa insieme a un preciso valore di confidenza.
+Il cuore del sistema risiede nella **Hypothesis and Evidence Scoring**. Per ogni risposta candidata, vengono attivati numerosi algoritmi indipendenti che cercano "prove" a supporto o a confutazione. Questo processo non è binario: ogni algoritmo assegna un punteggio basato su diverse prospettive (semantica, temporale, geografica, ecc.). Nella fase finale di **Synthesis**, tutti i punteggi vengono combinati e pesati attraverso modelli di apprendimento automatico precedentemente addestrati (**Learned Models**). Il risultato è una lista di risposte classificate (**Final Confidence Merging & Ranking**), dove la risposta vincente è quella che ha accumulato il supporto più forte e coerente, espressa insieme a un preciso valore di confidenza.
 
 È un'architettura molto complessa, analizziamo le sue parti partendo dai dati.
 

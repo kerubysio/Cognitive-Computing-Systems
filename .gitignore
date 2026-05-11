@@ -1,2 +1,6 @@
 chiave
 *.pub
+.makemd/
+.obsidian/
+.space/
+.trash/
