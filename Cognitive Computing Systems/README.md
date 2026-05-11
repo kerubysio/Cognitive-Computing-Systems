@@ -3,15 +3,14 @@
 
 Repository dedicato alla raccolta e all'organizzazione degli appunti per il corso di **Cognitive Computing Systems**. 
 
+# Come utilizzare gli appunti
+ Per vedere e modificare gli appunti è obbligatorio scaricare Obsidian o un software che supporti i file .md, altrimenti non saranno visualizzati foto e formule.
 ## Metodologia di lavoro
 Il materiale contenuto in questa cartella è stato creato tramite:
 * Slides del corso: Studio dei diagrammi e dei concetti tecnici ufficiali
 * Videolezioni
 * Gemini 
 * Obsidian
-
-# Come utilizzare gli appunti
- Per vedere e modificare gli appunti ti consiglio di scaricare Obsidian
 
 ### 1. Clonare il repository
 Apri il terminale, recati nella cartella dove desideri salvare il progetto e digita:
