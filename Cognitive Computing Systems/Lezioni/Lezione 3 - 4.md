@@ -1,5 +1,5 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
-DATA: 20/03/2026
+DATA: 17/03/2026 e 20/03/2026
 FONTE: L8 EVOLUTION FROM DEEPQA TO WATSON DEVELOPER CLOUD 24-3-2024 -1.pdf (slide 45 e successive)
 
 ---
@@ -136,11 +136,9 @@ Il livello della percezione raggruppa servizi specializzati nell'analisi di dive
 - **Computer Vision**    
 - **Data Ingestion**: servizi come _Document Conversion_ e _Retrieve and Rank_ permettono di trasformare documenti grezzi in unità di conoscenza indicizzate e ricercabili
 
-
-Il livello superiore utilizza i dati elaborati dalla percezione per guidare l'azione e l'interazione:
+Il livello superiore, ossia quello di Decision Making, utilizza i dati elaborati dalla percezione per guidare l'azione e l'interazione:
 
 - **Orchestration**: coordina il flusso tra i vari microservizi per fornire una risposta coerente.
-
 - **Action**: il sistema interagisce con l'esterno attraverso la logica di business (_Business Logic_), il richiamo di API esterne (_External APIs_), l'accesso a dati aziendali (_Enterprise Data_) e l'utilizzo di analisi predittive (_Predictive Analytics_).
 
 ![[Pasted image 20260403192402.png]]
@@ -152,19 +150,11 @@ In sintesi, il Conversation Service non si limita a rispondere, ma "orchestra" u
 
 L'architettura dei sistemi di **Cognitive Computing** si è evoluta in un ecosistema di microservizi specializzati, dove le capacità di percezione alimentano processi decisionali complessi.
 
-Le informazioni elaborate dalla percezione confluiscono nel livello decisionale, che si divide in due ambiti di interazione:
-
-- **Interaction (Interazione)**: gestita dai moduli di **Conversation** (per il dialogo interattivo) e **Discovery** (per l'esplorazione e l'estrazione di informazioni da grandi dataset).
-    
-- **Action (Azione)**: rappresenta l'output operativo del sistema, integrando la logica di business (_Business Logic_), il richiamo di API esterne (_External APIs_), l'accesso a basi di dati aziendali (_Enterprise Data_) e l'applicazione di analisi predittive (_Predictive Analytics_).
-
 --- 
 
-Dalla slide 17 alla slide 25, il documento approfondisce l'architettura tecnica, le funzionalità e l'evoluzione dei servizi di **Cognitive Computing** di IBM, con un focus particolare su **Watson Conversation** e **Watson Discovery**.
+Dalla slide 17 alla slide 25, il professore approfondisce l'architettura tecnica, le funzionalità e l'evoluzione dei servizi di **Cognitive Computing** di IBM, con un focus particolare su **Watson Conversation** e **Watson Discovery**.
 
-Di seguito il dettaglio dei contenuti trattati nelle slide indicate:
-
-### Watson Conversation e Interazione (Slide 17-19)
+### Watson Conversation Service (Slide 17-19)
 
 - **Configurazione del Bot**: La slide 17 mostra l'interfaccia di gestione di un chatbot (es. per una plancia di comando auto), dove vengono definiti **Intents** (es. saluti, localizzazione servizi), **Entities** e il flusso del **Dialog**.
     
