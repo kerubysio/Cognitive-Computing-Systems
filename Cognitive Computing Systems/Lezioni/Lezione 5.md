@@ -20,10 +20,6 @@ Il sistema può inoltre fungere da strumento decisionale per verificare l'effica
 ![[Pasted image 20260410174455.png]]
 
 La fase di definizione del dominio stabilisce il perimetro operativo dell'applicazione cognitiva, identificando per ogni settore specifico le fonti dati necessarie e le figure esperte indispensabili per l'addestramento.
-In ambito medico, ci si basa su classificazioni standard (ICD), cartelle cliniche (EMR) e pubblicazioni, avvalendosi di medici e ricercatori.
-Per le vendite, invece, il focus è sui dati di prodotto e transazioni, con il supporto di esperti commerciali.
-Nell'analisi dell'incidentalità, si attinge a database ministeriali e sensori stradali sotto la guida di ingegneri della sicurezza.
-Infine, per la manutenzione aeronautica, il sistema deve integrare registri tecnici e inventari ricambi, "imparando" dall'esperienza di meccanici specializzati e piloti per anticipare guasti e ottimizzare le riparazioni.
 
 ![[Pasted image 20260410174610.png]]
 
@@ -39,29 +35,30 @@ La seconda parte della definizione degli attributi utente si concentra sulla ges
 ![[Pasted image 20260410174859.png]]
 
 La fase di definizione delle domande e degli indizi distingue i sistemi cognitivi in due macro-categorie operative:
-- **Question-Answer Systems**, progettati per rispondere a interrogativi specifici che emergono direttamente dal dialogo e dall'interazione con l'utente
+- **Question-Answer Systems**, progettati per rispondere a interrogativi specifici che emergono direttamente dall'utente
 - **Discovery and Exploration Systems**, che invece partono dall'analisi dei dati per identificare pattern, indizi o correlazioni nascoste da esplorare.
+
 Identificare a quale di queste categorie appartiene l'applicazione è fondamentale per strutturare correttamente il flusso logico del sistema e determinare come esso debba elaborare le informazioni per soddisfare il bisogno dell'utente.
 
 ![[Pasted image 20260410175041.png]]
 
-La definizione delle domande e degli indizi si approfondisce in due approcci operativi: il primo basato su coppie Domanda-Risposta (Question-Answer pairs), dove il sistema attinge a fonti di dati per risolvere quesiti specifici, gestendo eventuali risposte conflittuali tramite l'analisi delle alternative e l'assegnazione di livelli di confidenza.
-Il secondo approccio riguarda l'analisi anticipatoria (Anticipatory analytics), in cui l'applicazione non si limita a rispondere, ma partecipa a un dialogo attivo con l'utente; utilizzando modelli predittivi, il sistema cognitivo è in grado di intuire le necessità informative latenti e anticipare la domanda successiva o un'intera sequenza di quesiti, rendendo l'interazione più fluida e proattiva.
+La definizione delle domande e degli indizi si approfondisce in due approcci operativi:
+- **Per Question-Answer Systems si predilige un approccio basato su coppie Domanda-Risposta (Question-Answer pairs):** il sistema attinge a fonti di dati per risolvere quesiti specifici. Nel caso di eventuali risposte conflittuali presenti nel database, il sistema cognitivo sceglierà quella corretta tramite l'analisi delle alternative e l'assegnazione di livelli di confidenza.
+- **Per Discovery and Exploration Systems, invece, l' approccio riguarda l'analisi anticipatoria (Anticipatory analytics):** l'applicazione risponde all'utente e, utilizzando modelli predittivi, è in grado di intuire le informazioni di cui ha bisogno e di anticipare le domande successive, rendendo l'interazione più fluida e proattiva.
 
 ![[Pasted image 20260410175249.png]]
 
-La slide illustra l'importanza di adattare le coppie Domanda-Risposta (Question-Answer pairs) al profilo specifico dell'utente all'interno di un sistema cognitivo. Attraverso l'esempio del "morcellatore", si nota come la risposta per un consumatore finale (Health Consumer) sia di tipo descrittivo e divulgativo, spiegando cos'è lo strumento e come funziona in termini semplici. Al contrario, la risposta per un esperto (Ginecologo) entra nel merito clinico di rischi e benefici (come il rischio di sarcoma occulto o i tempi di recupero), utilizzando un linguaggio tecnico appropriato.
+La slide illustra l'importanza di adattare le coppie Domanda-Risposta (Question-Answer pairs) al profilo specifico dell'utente all'interno di un sistema cognitivo. La risposta per un consumatore finale deve essere di tipo descrittivo e divulgativo, spiegando cos'è lo strumento e come funziona in termini semplici. Al contrario, la risposta per un esperto entra nel merito clinico di rischi e benefici, utilizzando un linguaggio tecnico appropriato.
 Questo dimostra che la costruzione dell'applicazione deve prevedere flussi informativi differenziati che tengano conto del background e delle necessità operative dell'interlocutore per garantire l'efficacia del sistema.
 
 ![[Pasted image 20260410175446.png]]
 
 La Anticipatory Analytics rappresenta un'evoluzione dei sistemi cognitivi che va oltre la semplice risposta a una domanda esplicita. Questa funzionalità interviene quando l'utente non riesce o non sa come formulare correttamente un quesito; il sistema analizza i dati disponibili per comprendere le esigenze latenti e anticipare i bisogni della persona.
-Applicata a settori come il retail, la sanità (health) o il food, questa capacità predittiva permette all'applicazione di proporre soluzioni, prodotti o informazioni rilevanti prima ancora che l'utente ne faccia richiesta, rendendo l'interazione proattiva e personalizzata in base al contesto.
 
 ![[Pasted image 20260410175616.png]]
 
-L'acquisizione delle fonti di dati richiede un equilibrio strategico tra diverse tipologie di informazioni per alimentare correttamente il sistema cognitivo. È fondamentale integrare i dati strutturati interni (come le cartelle cliniche EMR o lo storico ospedaliero in ambito sanitario) con l'analisi dei cosiddetti "dati nascosti", ovvero informazioni già archiviate ma spesso ignorate, come l'andamento ventennale di un titolo azionario.
-Infine, il sistema deve saper bilanciare i dati esterni, combinando fonti strutturate e non strutturate attraverso l'uso di tassonomie e ontologie specifiche del dominio applicativo, garantendo così che l'IA abbia una comprensione profonda e organizzata del contesto in cui opera.
+La fase di **Acquisizione delle fonti di dati** costituisce il momento fondamentale in cui si raccolgono e integrano le informazioni necessarie per alimentare il sistema. Questa operazione richiede un equilibrio tra diverse tipologie di dati: è essenziale combinare dati strutturati interni (come le cartelle cliniche EMR nel settore sanitario) con l'analisi di dati "nascosti", ovvero informazioni già archiviate ma mai ancora analizzate.
+Inoltre, il processo prevede il bilanciamento di fonti esterne, strutturate e non, appartenenti al dominio applicativo ma non raccolti direttamente dall'azienda. Ciò garantisce che l'intelligenza artificiale possa sviluppare una comprensione profonda, organizzata e contestualizzata dell'ambito in cui è chiamata ad operare.
 
 ![[Pasted image 20260410175722.png]]
 
@@ -71,9 +68,10 @@ La preparazione garantisce che tutti i dati siano leggibili, ricercabili e compr
 ![[Pasted image 20260410175905.png]]
 
 La fase finale di Training e Testing è volta al miglioramento dell'accuratezza dei modelli attraverso l'ottimizzazione di tre metriche fondamentali: Recall, Precision e Accuracy.
-Per migliorare la Recall (capacità di recupero), si interviene aggiungendo nuovi contenuti se vi è una carenza di dati o revisionando la "ground truth" e gli artefatti di interazione.
+Per migliorare la Recall (capacità di recupero), si interviene aggiungendo nuovi contenuti se vi è una carenza di dati o revisionando la "ground truth", ossia le 
+conoscenze di base del sistema cognitivo, e gli artefatti di interazione, ossia la cronologia delle interazioni tra il sistema cognitivo e l'utente.
 Per la Precision (precisione delle risposte), è necessario gestire le varianti delle domande integrando ontologie e glossari specifici.
-Infine, per elevare l'Accuracy generale, si colmano le lacune concettuali del sistema aggiungendo ulteriori glossari e ontologie, garantendo che l'applicazione cognitiva non solo trovi le informazioni, ma le interpreti correttamente nel contesto del dominio scelto.
+Infine, per elevare l'Accuracy generale, si colmano le lacune concettuali del sistema, garantendo che l'applicazione cognitiva non solo trovi le informazioni, ma le interpreti correttamente nel contesto del dominio scelto.
 
 
 
