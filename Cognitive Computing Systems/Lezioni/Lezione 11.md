@@ -4,7 +4,8 @@ FONTE: capitolo 15.01 e 15.02
 
 ---
 
-LEZIONE DA RIVEDERE (mancano una o due immagini)
+!!! LEZIONE DA RIVEDERE (mancano una o due immagini) 
+
 ![[Pasted image 20260428144951.png]]
 
 In questo paradigma, il nostro obiettivo è addestrare un modello affinché sia in grado di assegnare un campione di input a una categoria discreta ben definita. Mentre nella classificazione binaria ci limitiamo a due sole opzioni, in questo corso utilizzeremo il celebre **Digits dataset** di scikit-learn per affrontare un problema di **multi-classification**. Lavoreremo su quasi 1800 immagini di cifre scritte a mano, dove ogni input è una matrice $8 \times 8$ di pixel e l'output deve ricadere in una delle 10 classi possibili (i numeri da 0 a 9). Per fare ciò, partiremo dall'algoritmo **k-Nearest Neighbors (k-NN)**: un approccio non parametrico e intuitivo che basa la predizione sulla "vicinanza" metrica tra i dati nel feature space. È il punto di partenza perfetto per capire come i dati etichettati permettano a una macchina di "imparare" a riconoscere pattern visivi.

@@ -4,3 +4,4 @@ FONTE:
 
 --- 
 
+non ho seguito ma ci sta la registrazione
