@@ -118,3 +118,130 @@ Il blocco descrive la logica di creazione dell'estimatore e la gestione dei suoi
 La slide illustra la fase di addestramento (_fitting_) del modello k-Means e descrive gli attributi principali che l'oggetto espone una volta completata la convergenza geometrica.
 
 **Esecuzione dell'algoritmo:** L'istruzione `kmeans.fit(iris.data)` avvia l'ottimizzazione iterativa passando come unico argomento la matrice numerica delle feature. Trattandosi di un approccio non supervisionato, non viene fornito alcun vettore dei target reali. L'output mostra i parametri di default di scikit-learn, tra cui l'inizializzazione ottimizzata `init='k-means++'` e il limite massimo di iterazioni `max_iter=300`.
+
+![[Pasted image 20260520172621.png]]
+![[Pasted image 20260520172949.png|637]]
+Per valutare la bontà del clustering effettuato in modo cieco da k-Means, si confrontano gli indici predetti nell'array `labels_` con i valori reali dell'array `target` del dataset Iris.
+
+- **Distribuzione dei target originari:** I 150 campioni del dataset sono ordinati in modo sequenziale: i primi 50 appartengono alla specie _Iris setosa_ (valore `0`), i successivi 50 a _Iris versicolor_ (valore `1`) e gli ultimi 50 a _Iris virginica_ (valore `2`).
+    
+- **Condizione di clustering perfetto:** Se l'algoritmo avesse separato i dati in modo impeccabile, l'array `labels_` dovrebbe presentare tre blocchi omogenei da 50 elementi ciascuno, dove ogni blocco contiene un unico indice numerico distinto.
+
+> **Nota Fondamentale:** Gli indici numerici assegnati da k-Means (`0`, `1`, `2`) vengono scelti in modo del tutto arbitrario in base al posizionamento iniziale dei centroidi e **non hanno alcuna relazione semantica** con i valori codificati nell'array `target` originario. Ad esempio, il cluster che raccoglie le _Setose_ potrebbe essere etichettato dall'estimatore con l'indice `1` anziché `0`, senza che questo costituisca un errore di segmentazione.
+
+In uno scenario reale di apprendimento non supervisionato (dove i dati sono nativamente privi di etichette), non è possibile effettuare questo tipo di confronto diretto; la validità delle classi predette deve essere determinata analizzando le caratteristiche strutturali dei gruppi o ricorrendo alla valutazione di un esperto di dominio.
+
+![[Pasted image 20260520173100.png]]
+Per ridurre la dimensione di questo dataset da 4 a 2 dimensioni, useremo un estimatore PCA, non ci interessano i dettagli del suo algoritmo.
+
+![[Pasted image 20260520173336 1.png]]
+Il codice mostra la separazione delle fasi di addestramento e trasformazione tramite l'algoritmo PCA per proiettare le 4 caratteristiche originarie dell'Iris Dataset in uno spazio bidimensionale.
+A differenza del metodo combinato `fit_transform`, l'esecuzione viene qui suddivisa in due passaggi distinti per consentire il riutilizzo del modello memorizzato:
+
+- **Fase di Fit (`pca.fit`):** Allena l'estimatore sulla matrice originaria `iris.data` per calcolare gli autovettori e le componenti principali dello spazio lineare. Questa operazione viene eseguita una sola volta.
+    
+- **Fase di Transform (`pca.transform`):** Restituisce una nuova matrice, salvata in `iris_pca`, che mantiene inalterato il numero di righe (150 campioni) ma riduce le colonne a 2 (`n_components=2`), come confermato dall'output di `iris_pca.shape` pari a `(150, 2)`.
+
+Mantenere il metodo `transform` indipendente dal `fit` risulta fondamentale nel workflow di clustering per due motivi principali:
+
+1. **Elaborazione di Nuovi Dati:** Consente di proiettare nello stesso spazio vettoriale 2D eventuali nuovi campioni raccolti in futuro, senza dover ricalcolare l'intera struttura delle componenti principali.
+    
+2. **Proiezione dei Centroidi:** Permette di richiamare una seconda volta il metodo `pca.transform` sui centroidi calcolati da k-Means (i quali nascono nello spazio originario a 4 dimensioni), riducendo anch'essi a 2 dimensioni per poterli mappare graficamente e sovrapporre correttamente alla nuvola di punti dei campioni.
+
+![[Pasted image 20260520173835.png]]
+Adesso vogliamo visualizzare i dati.
+
+Il codice mostra come strutturare i dati compressi tramite PCA in un nuovo DataFrame Pandas e descrive la logica necessaria per includere i centroidi nello stesso spazio grafico bidimensionale.
+
+I dati bidimensionali ottenuti dalla PCA vengono organizzati in una tabella per facilitare il plotting con Seaborn, riassociando le etichette delle specie per gestire i colori dei punti.
+
+- **`columns=['Component1', 'Component2']`**: Assegna nomi generici alle due nuove coordinate prodotte dalla riduzione dimensionale (le due componenti principali).
+    
+- **Mappatura dei Colori**: Copiando la colonna `species` dal DataFrame originale a quello ridotto, si isola l'informazione semantica che verrà passata al parametro `hue` delle funzioni grafiche.
+    
+I centroidi calcolati da k-Means si trovano originariamente nello spazio a 4 dimensioni, poiché rappresentano il "campione medio" (il baricentro) delle caratteristiche morfologiche originarie dei fiori appartenenti a quel gruppo.
+
+- **Vincolo Geometrico**: Non è possibile inserire direttamente i centroidi a 4 dimensioni su un grafico cartesiano basato sulle due componenti della PCA.
+    
+- **Soluzione**: Ciascun centroide contenuto nell'array `cluster_centers_` deve subire la medesima trasformazione lineare applicata ai campioni. Verrà quindi passato al metodo `pca.transform` dell'istanza PCA precedentemente addestrata, proiettando anche i centri dei cluster nello spazio bidimensionale (`Component1`, `Component2`), come segue:
+
+![[Pasted image 20260520174147.png|624]]
+Dove s ne indica la dimensione. Otteniamo così i seguenti grafici:
+
+![[Pasted image 20260520174227.png|615]]
+
+![[Pasted image 20260520174602.png]]
+Come si sceglie il miglior algoritmo di clustering allora?
+Ne eseguiamo più di uno e vediamo quale performa meglio. Useremo in particolare quattro estimatori, senza entrare nei dettagli dei loro algoritmi.
+
+![[Pasted image 20260520174837.png]]
+Useremo quindi KMeans, DBSCAN, MeanShift, SpectralClustering e AgglomerativeClustering.
+
+![[Pasted image 20260520175051 1.png]]
+
+```
+import numpy as np
+
+for name, estimator in estimators.items():
+    estimator.fit(iris.data)
+    print(f'\n{name}:')
+    for i in range(0, 101, 50):
+        labels, counts = np.unique(
+            estimator.labels_[i:i+50], return_counts=True)
+        print(f'{i}-{i+50}:')
+        for label, count in zip(labels, counts):
+            print(f'    label={label}, count={count}')
+```
+
+Il codice implementa un ciclo di valutazione quantitativa per confrontare le performance di diversi stimatori di clustering memorizzati nel dizionario `estimators`. Poiché il dataset Iris è ordinato sequenzialmente in tre blocchi contigui da 50 campioni (0-50 per _setosa_, 50-100 per _versicolor_, 100-150 per _virginica_), l'algoritmo sfrutta questa struttura per misurare la purezza dei cluster generati.
+
+All'interno del ciclo principale, dopo aver addestrato lo stimatore corrente tramite `estimator.fit(iris.data)`, un ciclo nidificato esegue uno slicing statico sull'array `estimator.labels_` muovendosi a passi di 50 elementi tramite l'istruzione `range(0, 101, 50)`.
+La funzione `np.unique` riceve la sotto-porzione di array estratta (`[i:i+50]`) e, grazie al parametro `return_counts=True`, restituisce due vettori: le etichette dei cluster individuate in quel blocco e la frequenza assoluta di ciascuna di esse. Infine, un ciclo finale stampa la distribuzione dei conteggi, permettendo di verificare visivamente se ciascuno scaglione reale da 50 elementi sia stato raggruppato sotto un'unica etichetta dominante o se presenti contaminazioni dovute a errori di assegnazione spaziale dell'algoritmo.
+Output:
+
+![[Pasted image 20260520175229.png|254]]![[Pasted image 20260520175320.png|194]]
+Analisi dei risultati:
+L'output mostra la distribuzione dei conteggi di clustering per cinque diversi algoritmi applicati all'Iris Dataset, permettendo di valutarne l'accuratezza analizzando la purezza dei tre blocchi sequenziali da 50 campioni (0-50: _setosa_, 50-100: _versicolor_, 100-150: _virginica_).
+
+- **Isolamento di Iris setosa (0-50):** Tutti gli algoritmi riescono a isolare perfettamente il blocco relativo alla specie _setosa_ assegnando tutti i 50 campioni a un unico cluster omogeneo (con l'eccezione di DBSCAN che classifica 1 punto come rumore, assegnandogli l'etichetta `-1`). Questo conferma la netta separazione geometrica di questa classe nello spazio delle feature.
+    
+- **KMeans:** Dimostra un'ottima stabilità sul secondo blocco (48 punti assegnati al cluster `0` e solo 2 al cluster `2`), ma incontra difficoltà significative nella separazione del terzo blocco (14 campioni di _virginica_ vengono erroneamente raggruppati nel cluster `0` insieme alle _versicolor_).
+    
+- **MeanShift:** Fallisce nel compito di partizionamento a tre classi, collassando la quasi totalità dei campioni di _versicolor_ e _virginica_ all'interno dello stesso identico cluster (etichetta `0`). Questo comportamento è dovuto alla densità spaziale e alla parziale sovrapposizione delle due specie, che l'algoritmo interpreta come un'unica grande regione ad alta densità.
+    
+- **DBSCAN:** Identifica un elevato numero di campioni di rumore (`label=-1`) distribuiti tra le classi (1 nel primo blocco, 6 nel secondo, 10 nel terzo). Inoltre, non riesce a distinguere le _versicolor_ dalle _virginica_, accumulando la maggior parte di entrambi i blocchi (44 e 40 punti) sotto l'unica etichetta `1`.
+    
+- **SpectralClustering e AgglomerativeClustering:** Mostrano un comportamento speculare e quasi identico a KMeans. Entrambi isolano perfettamente il primo blocco e gestiscono in modo eccellente il secondo blocco (50 punti puri per lo Spectral, 49 per l'Agglomerative). Tuttavia, risentono della medesima sovrapposizione geometrica nel terzo blocco, mancando l'assegnazione di 15 campioni di _virginica_ che vengono confusi con il cluster delle _versicolor_.
+
+![[Pasted image 20260520175942.png]]
+
+---
+Cambiamo argomento, iniziamo a parlare del Deep Learning partendo dal capitolo 16 del libro.
+
+![[Pasted image 20260520180407 1.png]]
+Il deep learning rappresenta un potente sottoinsieme del machine learning che ha permesso di raggiungere risultati straordinari e d'impatto in ambiti complessi come la computer vision (visione artificiale) e l'elaborazione del linguaggio naturale.
+
+Le soluzioni di deep learning richiedono un'immensa quantità di risorse computazionali e la loro attuale fattibilità e diffusione sono legate alla convergenza di quattro fattori tecnologici abilitanti:
+
+- **Big data:** La disponibilità di enormi volumi di dati, indispensabili per l'addestramento e combattere l'overfitting.
+    
+- **Potenza di calcolo dei processori:** L'evoluzione dell'hardware specifico in grado di sostenere i pesanti calcoli matematici richiesti dai modelli.
+    
+- **Velocità di rete internet più elevate:** Essenziali per il trasferimento rapido di dataset massicci distribuiti globalmente.
+    
+- **Avanzamenti nell'hardware e nel software per il calcolo parallelo:** Lo sviluppo di architetture dedicate e di framework software ottimizzati per parallelizzare l'esecuzione simultanea dei calcoli su matrici e tensori, riducendo drasticamente i tempi di training.
+
+![[Pasted image 20260520180816.png]]
+Keras offre un'interfaccia ad alto livello intuitiva e semplificata per Google TensorFlow, la libreria open-source più diffusa e utilizzata per lo sviluppo e l'addestramento di modelli di deep learning. Oltre a TensorFlow, Keras è stata originariamente progettata per interfacciarsi anche con altri backend computazionali, come CNTK di Microsoft e Theano.
+
+![[Pasted image 20260520181107 1.png]]
+L'addestramento dei modelli di deep learning richiede una straordinaria quantità di potenza di calcolo. Quando l'addestramento viene eseguito su dataset massivi (_big-data_), il processo di ottimizzazione dei parametri della rete può richiedere ore, giorni o persino settimane.
+
+Per soddisfare queste importanti richieste computazionali, nell'ecosistema del deep learning si fa un uso intensivo di hardware dedicato ad alte prestazioni:
+
+- **GPU (Graphics Processing Units):** Sviluppate principalmente da NVIDIA, sono chip ottimizzati per l'elaborazione parallela massiva, in grado di eseguire simultaneamente migliaia di operazioni matematiche elementari su matrici.
+    
+- **TPU (Tensor Processing Units):** ASIC (Application-Specific Integrated Circuits) progettati ad hoc da Google espressamente per accelerare i calcoli tensoriali tipici delle reti neurali, massimizzando il throughput e l'efficienza energetica rispetto alle GPU tradizionali.
+
+In scenari didattici o con modelli di dimensioni ridotte, la complessità è tale da consentire il completamento del training in tempi brevi (da pochi minuti a meno di un'ora) anche utilizzando comuni e convenzionali CPU domestiche.
+
