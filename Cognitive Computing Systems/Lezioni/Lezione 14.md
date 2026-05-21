@@ -4,7 +4,7 @@ FONTE:
 
 ---
 
-![[Pasted image 20260520130649.png]]
+![[Cognitive Computing Systems/Immagini/Img - Lezione 14/Pasted image 20260520130649.png]]
 L'analisi del clustering tramite l'algoritmo k-Means introduce uno dei modelli più semplici, diffusi e fondamentali dell'apprendimento non supervisionato. Il compito principale di questa tecnica consiste nell'esaminare un insieme di campioni non etichettati (_unlabeled_) e raggrupparli autonomamente in clusters. All'interno del workflow, la variabile $k$ rappresenta l'iperparametro cruciale impostato dall'utente, il quale definisce a priori il numero esatto di raggruppamenti che l'algoritmo deve imporre sulla distribuzione spaziale degli elementi.
 Per organizzare e consolidare la struttura dei diversi gruppi, il modello esegue ciclicamente calcoli di distanza geometrica nello spazio multidimensionale in modo analogo a quanto avviene nella classificazione k-NN (_k-Nearest Neighbors_), associando progressivamente ciascun punto della matrice al centroide matematico più vicino per minimizzare la varianza interna a ogni singolo cluster.
 
