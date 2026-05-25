@@ -266,7 +266,6 @@ Il workflow operativo per configurare e avviare lo strumento prevede i seguenti 
 ```
 
 5. **Accedere all'interfaccia web:** Aprire il proprio browser web e digitare l'indirizzo `http://localhost:6006` per interagire con la dashboard.
-    
 
 > [!NOTE]
 > 
