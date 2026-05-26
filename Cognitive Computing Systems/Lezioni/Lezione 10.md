@@ -63,9 +63,7 @@ Nell'ambito del Supervised Machine Learning parliamo principalmente di:
     
 - **Classificazione (_Classification_):** Si applica quando la variabile target è di tipo categoriale o discreto. Il modello assegna i campioni di input a una o più classi specifiche (es. determinare se un'email è "Spam" o "Not Spam", oppure riconoscere se un'immagine ritrae un cane o un gatto).
 
-Il **clustering** rappresenta la terza macro-categoria fondamentale del machine learning e si colloca nell'ambito dell'Unsupervised Machine Learning.
-
-A differenza della regressione e della classificazione, nel clustering il dataset non contiene una variabile target $y$: i dati non sono etichettati e non esiste una "risposta corretta" da prevedere. L'obiettivo dell'algoritmo è analizzare la struttura intrinseca dei dati per identificare pattern nascosti e raggruppare i campioni in sottoinsiemi omogenei, detti appunto **cluster**.
+Il **clustering** rappresenta la terza macro-categoria fondamentale del machine learning e si colloca nell'ambito dell'Unsupervised Machine Learning. A differenza della regressione e della classificazione, nel clustering il dataset non contiene una variabile target $y$: i dati non sono etichettati e non esiste una "risposta corretta" da prevedere. L'obiettivo dell'algoritmo è analizzare la struttura intrinseca dei dati per identificare pattern nascosti e raggruppare i campioni in sottoinsiemi omogenei, detti appunto **cluster**.
 
 Per trovare dataset da usare durante l'addestramento, il professore consiglia il sito https://www.openml.org/.
 

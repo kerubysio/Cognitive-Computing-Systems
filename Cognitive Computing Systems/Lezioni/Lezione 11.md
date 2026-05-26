@@ -4,15 +4,13 @@ FONTE: capitolo 15.01 e 15.02
 
 ---
 
-!!! LEZIONE DA RIVEDERE (mancano i commenti ad alcune slides) 
-
 ![[Pasted image 20260428144951.png]]
 
-In questo paradigma, il nostro obiettivo è addestrare un modello affinché sia in grado di assegnare un campione di input a una categoria discreta ben definita. Mentre nella classificazione binaria ci limitiamo a due sole opzioni, in questo corso utilizzeremo il celebre **Digits dataset** di scikit-learn per affrontare un problema di **multi-classification**. Lavoreremo su quasi 1800 immagini di cifre scritte a mano, dove ogni input è una matrice $8 \times 8$ di pixel e l'output deve ricadere in una delle 10 classi possibili (i numeri da 0 a 9). Per fare ciò, partiremo dall'algoritmo **k-Nearest Neighbors (k-NN)**: un approccio non parametrico e intuitivo che basa la predizione sulla "vicinanza" metrica tra i dati nel feature space. È il punto di partenza perfetto per capire come i dati etichettati permettano a una macchina di "imparare" a riconoscere pattern visivi.
+In questo paradigma, il nostro obiettivo è addestrare un modello affinché sia in grado di assegnare un campione  aduna categoria discreta ben definita. In questo corso utilizzeremo il celebre **Digits dataset** di scikit-learn per affrontare un problema di **multi-classification**. Lavoreremo su quasi 1800 immagini di cifre scritte a mano, dove ogni input, ossia ogni elemento del dataset, è una matrice $8 \times 8$ di pixel e l'output deve ricadere in una delle 10 classi possibili (i numeri da 0 a 9). Per fare ciò, partiremo dall'algoritmo **k-Nearest Neighbors (k-NN)**. È il punto di partenza perfetto per capire come i dati etichettati permettano a una macchina di "imparare" a riconoscere pattern visivi.
 
 ![[Pasted image 20260428145329.png]]
 
-L'algoritmo k-Nearest Neighbors (k-NN) è un metodo di classificazione supervisionata che predice la classe di un campione analizzando i $k$ campioni di addestramento più vicini in termini di **distanza metrica**, ovvero una funzione matematica (come la distanza Euclidea o di Manhattan) utilizzata per quantificare la similarità spaziale tra i vettori di caratteristiche dei dati. Il principio di funzionamento si basa su un sistema di votazione: la classe che riceve il maggior numero di preferenze tra i vicini selezionati determina l'appartenenza del nuovo dato. Per garantire una decisione univoca ed evitare situazioni di parità (ties), è prassi comune utilizzare un valore di $k$ dispari, assicurando così che ci sia sempre una classe dominante nel conteggio dei voti.
+L'algoritmo k-Nearest Neighbors (k-NN) è un metodo di classificazione supervisionata che predice la classe di un campione analizzando i $k$ campioni di addestramento più vicini in termini di **distanza metrica**, ovvero una funzione matematica (come la distanza Euclidea o di Manhattan) utilizzata per quantificare la similarità spaziale tra i vettori di caratteristiche dei dati. Il principio di funzionamento si basa su un sistema di votazione: la classe che riceve il maggior numero di preferenze tra i vicini selezionati determina l'appartenenza del nuovo dato. Per garantire una decisione univoca ed evitare situazioni di parità, è prassi comune utilizzare un valore di $k$ dispari, assicurando così che ci sia sempre una classe dominante nel conteggio dei voti.
 Per X ed Y è facile prevedere la classe di appartenenza, ma per Z no. In questi casi vince la classe con il maggior numero di voti vicini all'elemento da classificare, in questo caso vincono i rossi 2v1.
 
 ![[Pasted image 20260428150327.png]]
@@ -28,25 +26,45 @@ Il Digits dataset utilizzato è un subset del dataset UCI ML hand-written digits
 All’interno dell'oggetto Bunch, gli attributi **data** e **target** sono memorizzati come array NumPy, garantendo un'elaborazione efficiente. L'array `data` contiene i 1797 campioni, dove ciascuna immagine è rappresentata da un vettore di **64 feature** che indicano l'intensità dei pixel, con valori che spaziano da **0 (bianco)** a **16 (nero)**. Parallelamente, l'array `target` contiene le etichette numeriche (da 0 a 9) associate a ogni immagine, ovvero la "verità di base" (ground truth) necessaria per l'addestramento e la valutazione del modello; come mostrato nello snippet di codice, è possibile accedere a questi valori tramite slicing (es. `digits.target[::100]` che ci permette di accedere ad ogni 100esimo valore) per esaminare la distribuzione delle classi nel dataset.
 
 ![[Pasted image 20260515191402.png]]
+Python
 
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+```
+digits.data.shape
+```
+
+- Posso capire il numero di campioni del dataset e il numero delle relative caratteristiche (features) tramite l'attributo `shape` dell'array `data`.
+  L'output così ottenuto, ossia `(1797, 64)`, indica che il dataset è composto da **1797 campioni complessivi** (le righe) e che ciascun campione possiede **64 feature** (le colonne), corrispondenti ai singoli pixel di un'immagine $8 \times 8$ linearizzati in un vettore monodimensionale.
+
+Python
+```
+digits.target.shape
+```
+
+- Per verificare che il numero di etichette reali corrisponda esattamente al numero di campioni analizzabili, si interroga l'attributo `shape` applicato all'array `target`. L'output `(1797,)` restituisce una tupla a singola dimensione che conferma la presenza di 1797 valori target, garantendo la perfetta consistenza geometrica tra gli input e le relative risposte attese prima di alimentare l'algoritmo.
 
 ![[Pasted image 20260428151915.png]]
-Oltre all'attributo unidimensionale dei dati, l'oggetto Bunch del Digits dataset espone l'attributo **images**, che preserva la natura bidimensionale originale dei campioni. Ogni elemento in questo attributo è un **array 8-by-8** di tipo NumPy **float64**, dove ogni valore rappresenta l'intensità del pixel nella sua posizione spaziale (larghezza e altezza). Come osservabile nell'esempio relativo all'indice 13, questa rappresentazione matriciale è fondamentale per visualizzare correttamente la cifra o per applicare algoritmi di computer vision che sfruttano la topologia 2D dell'immagine.
+L'oggetto Bunch del Digits dataset possiede anche l'attributo **images**, che consiste in un array contenenti le immagini dei campioni (in questo caso le cifre). Ogni elemento in questo attributo è quindi un **array 8-by-8** di float, dove ogni valore rappresenta l'intensità del pixel nella sua posizione spaziale (larghezza e altezza). Come osservabile nell'esempio relativo all'indice 13, questa rappresentazione matriciale è fondamentale per visualizzare correttamente la cifra o per applicare algoritmi di computer vision che sfruttano la topologia 2D dell'immagine.
 
 ![[Pasted image 20260428151959.png|315]]
 
 ![[Pasted image 20260428152114.png]]
-
-Per utilizzare correttamente gli stimatori di scikit-learn, è necessario che i dati siano organizzati in una struttura bidimensionale (array 2D, lista di liste o DataFrame pandas), dove ogni riga corrisponde a un singolo campione e ogni colonna rappresenta una specifica feature. Nel caso di dati nativamente multidimensionali, come le immagini $8 \times 8$ viste in precedenza, i campioni devono essere sottoposti a un processo di flattening per essere trasformati in array unidimensionali (vettori di feature). Inoltre, eventuali feature categoriche espresse tramite stringhe devono essere pre-elaborate in valori numerici, ad esempio attraverso tecniche come il one-hot encoding (che vedremo meglio più avanti), per permettere al modello di eseguire i calcoli necessari.
+Per utilizzare correttamente gli stimatori di scikit-learn, è necessario che i dati siano organizzati in una struttura bidimensionale, quindi matriciale, di valori float (array 2D, lista di liste o DataFrame pandas). Ogni riga corrisponde a un singolo campione e ogni colonna rappresenta una specifica feature.
+Nel caso di dati multidimensionali, come le immagini $8 \times 8$ viste in precedenza, i campioni devono essere sottoposti a un processo di flattening per essere trasformati in array unidimensionali. Inoltre, eventuali feature categoriche espresse tramite stringhe devono essere pre-elaborate in valori numerici, ad esempio attraverso tecniche come il one-hot encoding (che vedremo meglio più avanti), per permettere al modello di eseguire i calcoli necessari.
 
 ![[Pasted image 20260515191552.png]]
+Python
+```
+digits.data[13]
+```
 
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+- La funzione `load_digits` restituisce un dataset pre-elaborato, pronto per essere passato direttamente agli algoritmi di machine learning.
+    
+- L'immagine bidimensionale originale (accessibile tramite `digits.images[13]`) viene linearizzata (_flattening_) in un array monodimensionale di forma $1 \times 64$, i cui elementi numerici rappresentano l'intensità dei pixel in scala di grigi. Per vedere l'array linearizzato corrispondente basta scrivere `digits.data[13]`.
 
 ![[Pasted image 20260515191818.png]]
+- È fondamentale acquisire familiarità con i propri dati prima di applicare qualsiasi modello, una fase metodologica definita esplorazione dei dati. In questo passaggio si procede alla visualizzazione grafica delle prime 24 immagini del dataset per analizzarne visivamente il contenuto strutturale.
 
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+- Per comprendere l'effettiva difficoltà del problema del riconoscimento delle cifre scritte a mano, basta osservare le marcate variazioni tra le diverse immagini del numero 3 e del numero 2 presenti nella seguente immagine.
 
 ![[Pasted image 20260515191844.png]]
 
@@ -68,38 +86,38 @@ In questa fase cruciale del workflow di machine learning, utilizziamo la funzion
 
 ![[Pasted image 20260515192243.png]]
 ![[Pasted image 20260515192326.png]]
-
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+Questo codice mette in pratica quello che abbiamo appena detto. I dataset presenti in scikit-learn presentano classi bilanciate. Di conseguenza i campioni sono divisi equamente tra le varie classi. Le classi non bilanciate possono portare a risultati sbagliati.
 
 ![[Pasted image 20260428155721.png]]
-
-Di default, la funzione `train_test_split` riserva il **75% dei dati per l'addestramento** (training) e il **25% per il testing**. Come si evince dalle dimensioni degli array, su un totale di 1797 campioni, il training set (`X_train`) ne riceve **1347**, mentre il test set (`X_test`) ne riceve **450**, mantenendo per entrambi la struttura a **64 feature**. Verificare la proprietà `.shape` di questi set è un passaggio fondamentale per assicurarsi che la suddivisione sia avvenuta correttamente e che le proporzioni rispettino i requisiti necessari per una solida fase di validazione del modello.
+Di default, la funzione `train_test_split` riserva il **75% dei dati per l'addestramento** (training) e il **25% per il testing**. Come si evince dalle dimensioni degli array, ossia il training set (`X_train`) e il test set (`X_test`) . Verificare la proprietà `.shape` di questi set è un passaggio fondamentale per assicurarsi che la suddivisione sia avvenuta correttamente e che le proporzioni rispettino i requisiti necessari per una solida fase di validazione del modello.
 
 ![[Pasted image 20260428160026.png]]
-
 Nella libreria scikit-learn, i modelli di machine learning vengono definiti **estimatori**. Per implementare l'algoritmo dei k-vicini più prossimi, si utilizza l'estimatore **KNeighborsClassifier**, che viene importato dal modulo `sklearn.neighbors`. La creazione del modello avviene istanziando un oggetto di questa classe, come mostrato nell'istruzione `knn = KNeighborsClassifier()`, che configura il classificatore pronto per essere addestrato sui dati.
 
 ![[Pasted image 20260428160207.png]]
-
-L'addestramento dell'estimatore avviene tramite il metodo **fit**, che carica nel modello sia il set di campioni (`X_train`) sia le relative etichette target (`y_train`). Durante questa fase, il classificatore memorizza i dati per poter calcolare le vicinanze durante la predizione; in particolare, il parametro **n_neighbors** all'interno di `KNeighborsClassifier` corrisponde al valore $k$ dell'algoritmo, definendo quanti vicini debbano essere considerati per la votazione. L'esecuzione di `knn.fit` restituisce l'oggetto classificatore stesso, confermando l'avvenuto caricamento dei dati e l'applicazione delle impostazioni di default (o personalizzate) necessarie per il funzionamento del modello.
-
-![[Pasted image 20260515192512.png]]
-
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+L'addestramento dell'estimatore avviene tramite il metodo **fit**, che carica nel modello sia il set di campioni (`X_train`) sia le relative etichette target (`y_train`). Durante questa fase, il classificatore memorizza i dati per poter calcolare le vicinanze durante la predizione; in particolare, il parametro **n_neighbors** all'interno di `KNeighborsClassifier` corrisponde al valore $k$ dell'algoritmo, definendo quanti vicini debbano essere considerati per la votazione.
+L'esecuzione di `knn.fit` restituisce l'oggetto classificatore stesso, confermando l'avvenuto caricamento dei dati e l'applicazione delle impostazioni necessarie per il funzionamento del modello.
 
 ![[Pasted image 20260515192554.png]]
-
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+- Il metodo `fit` , di solito, carica i dati all'interno dell'estimatore ed esegue calcoli matematici complessi per estrarre i pattern e ottimizzare i parametri interni, completando così l'effettivo processo di addestramento.
+    
+- Il metodo `fit` applicato a un classificatore k-NN, invece, si limita esclusivamente a caricare i dati nella memoria dell'oggetto.
+    
+    - Non viene avviato alcun processo di apprendimento durante questa chiamata.
+        
+    - L'estimatore viene definito pigro (_lazy learner_) perché l'intero carico computazionale viene svolto solo quando in cui il modello viene invocato per generare le predizioni sui nuovi dati.
+    
+- A differenza del k-NN, molti altri modelli (come le reti neurali profonde) richiedono fasi di addestramento intensive che possono durare minuti, ore o giorni. In questi scenari, l'utilizzo di acceleratori hardware ad alte prestazioni come GPU e TPU consente di ridurre drasticamente i tempi di elaborazione.
 
 ![[Pasted image 20260515192641.png]]
 ![[Pasted image 20260515192717.png]]
 Nota come la previsione è sempre corretta tranne che nel penultimo elemento (prevede 5 ma la realtà è 3)
 
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+Per effettuare le previsioni è sufficiente chiamare il metodo `predict()` dell''estimatore `knn` sul dataset di test.
 
 ![[Pasted image 20260515192819.png]]
 
-(AGGIUNGERE COMMENTO DI GEMINI/CHATGPT SE NECESSARIO)
+Questo codice restituisce tutte le volte in cui l'estimatore ha sbagliato previsione.
 
 
 
