@@ -17,8 +17,6 @@ La seconda parte della lezione è un'introduzione al Machine Learning.
 ---
 
 ![[Pasted image 20260525190826 1.png]]
-Il **machine learning** rappresenta uno dei sottofondi più promettenti e stimolanti dell'**intelligenza artificiale**. Attraverso questo paradigma, è possibile risolvere rapidamente problemi complessi che fino a pochi anni fa né programmatori alle prime armi né professionisti esperti avrebbero tentato di affrontare con la programmazione tradizionale. Data la vastità e la complessità di questo macro-argomento, l'obiettivo è fornire un'introduzione accessibile e pratica alle tecniche fondamentali e più lineari.
-
 Alla base del funzionamento del machine learning risiede un quesito fondamentale: è possibile fare in modo che i computer apprendano? La componente chiave che rende realizzabile questo processo è la disponibilità dei **dati**, preferibilmente in grandi volumi.
 
 Il cambio di paradigma rispetto allo sviluppo software classico si articola su principi precisi:
@@ -44,18 +42,18 @@ Il workflow operativo standard prevede la segmentazione delle fasi di sviluppo i
 
 - **Addestramento (_Training_):** Il modello viene inizialmente allenato su un sottoinsieme controllato del dataset (il _training set_) per permettere all'algoritmo di estrarre le relazioni statistiche tra le feature.
     
-- **Verifica (_Testing_):** Le prestazioni e la bontà del modello vengono valutate sulla parte rimanente dei dati (il _test set_) per quantificarne la precisione matematica.
+- **Verifica (_Testing_):** Le prestazioni del modello vengono valutate sulla parte rimanente dei dati (il _test set_) per quantificarne la precisione matematica.
     
 - **Predizione e inferenza:** Una volta convalidati, i modelli vengono distribuiti in produzione per elaborare flussi di dati mai visti prima, consentendo al computer di assumere comportamenti intelligenti e predittivi automatizzando task che un tempo richiedevano procedure meccaniche e ripetitive.
 
 ![[Pasted image 20260525191519.png]]
-La selezione dell'estimatore ottimale all'interno dell'ecosistema Scikit-Learn segue un approccio prettamente empirico e basato sui dati. Poiché le astrazioni di `sklearn` nascondono i dettagli algebrici complessi, la scelta del modello si affina con l'esperienza, sviluppando una familiarità legata alle caratteristiche intrinseche del problema e alla dimensionalità del dataset.
+La selezione dell'estimatore ottimale all'interno dell'ecosistema Scikit-Learn segue un approccio prettamente empirico. Poiché le astrazioni di `sklearn` nascondono i dettagli algebrici complessi, la scelta del modello si affina con l'esperienza, sviluppando una familiarità legata alle caratteristiche intrinseche del problema e alla dimensionalità del dataset.
 
 Tuttavia, anche accumulando un'elevata competenza sul campo, è statisticamente improbabile riuscire a intuire a priori quale sia l'algoritmo perfetto per ogni nuovo set di dati non ancora analizzato. Per superare questo limite, Scikit-Learn adotta una filosofia orientata alla sperimentazione di massa (_"try 'em all"_):
 
 - **Interfaccia unificata:** Grazie alla standardizzazione dei metodi (come l'adozione universale di `.fit()` per l'addestramento e `.predict()` per l'inferenza), l'architettura permette di sostituire o iterare rapidamente tra decine di algoritmi diversi scrivendo pochissime linee di codice supplementari.
     
-- **Valutazione comparativa:** Ciascun modello restituisce metriche oggettive e standardizzate sulle proprie prestazioni (quali accuratezza, loss, $R^2$ o matrici di confusione). Questo comportamento trasparente consente di confrontare i risultati analitici dei vari candidati in modo sistematico, isolando l'algoritmo (o l'insieme di modelli) che dimostra la capacità di generalizzazione più elevata sul problema specifico.
+- **Valutazione comparativa:** Ciascun modello restituisce metriche oggettive e standardizzate sulle proprie prestazioni. Questo comportamento trasparente consente di confrontare i risultati analitici dei vari candidati in modo sistematico, isolando l'algoritmo (o l'insieme di modelli) che dimostra la capacità di generalizzazione più elevata sul problema specifico.
 
 ![[Pasted image 20260525191704.png]]
 Nel machine learning, i problemi di natura predittiva si dividono in due macro-categorie fondamentali, distinte in base alla tipologia della variabile target che si desidera stimare: Supervised Machine Learning e Unsupervised Machine Learning.
@@ -65,7 +63,7 @@ Nell'ambito del Supervised Machine Learning parliamo principalmente di:
     
 - **Classificazione (_Classification_):** Si applica quando la variabile target è di tipo categoriale o discreto. Il modello assegna i campioni di input a una o più classi specifiche (es. determinare se un'email è "Spam" o "Not Spam", oppure riconoscere se un'immagine ritrae un cane o un gatto).
 
-Il **clustering** rappresenta la terza macro-categoria fondamentale del machine learning e si colloca nell'ambito dell'**apprendimento non supervisionato** (_Unsupervised Machine Learning_).
+Il **clustering** rappresenta la terza macro-categoria fondamentale del machine learning e si colloca nell'ambito dell'Unsupervised Machine Learning.
 
 A differenza della regressione e della classificazione, nel clustering il dataset non contiene una variabile target $y$: i dati non sono etichettati e non esiste una "risposta corretta" da prevedere. L'obiettivo dell'algoritmo è analizzare la struttura intrinseca dei dati per identificare pattern nascosti e raggruppare i campioni in sottoinsiemi omogenei, detti appunto **cluster**.
 
