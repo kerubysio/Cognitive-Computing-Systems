@@ -9,7 +9,6 @@ In questa lezione studieremo la regressione lineare multipla tramite il caso di 
 Dal punto di vista software, l'estimatore `LinearRegression` fornito dal framework scikit-learn è nativamente progettato per scalare su più dimensioni, eseguendo in modo del tutto automatico l'algoritmo di regressione multipla non appena rileva che la matrice dei dati d'ingresso contiene più di un vettore di caratteristiche.
 
 ![[Pasted image 20260519192746.png]]
-
 La base dati è stata interamente derivata dal censimento nazionale degli Stati Uniti condotto nel 1990, strutturando le informazioni in modo da dedicare una singola riga della matrice a ciascun gruppo di blocchi censuari (_census block group_). 
 
 ![[Pasted image 20260519192943.png]]
