@@ -86,19 +86,19 @@ Una volta completato l'addestramento, il modello di regressione lineare esprime 
 ![[Pasted image 20260505161811.png]]
 In questa fase, i valori di **pendenza** (`coef_`) e **intercetta** (`intercept_`) calcolati dal modello vengono utilizzati per effettuare previsioni concrete attraverso una funzione **lambda** che implementa l'equazione della retta $y = mx + b$. Questa logica permette non solo di stimare temperature future (come per l'anno 2019), ma anche di effettuare una stima retroattiva per anni passati non presenti nel dataset originario (come il 1890). Applicando matematicamente il modello, trasformiamo l'analisi statistica in uno strumento predittivo capace di fornire una temperatura stimata per qualsiasi valore temporale fornito come input.
 
-FOCUS:
-Una funzione **lambda** in Python è semplicemente un modo rapido e sintetico per definire una funzione su una sola riga, senza dover usare la classica struttura `def nome_funzione()`.
-
+> [!NOTE]
+>FOCUS:
+>
+>Una funzione **lambda** in Python è semplicemente un modo rapido e sintetico per definire una funzione su una sola riga, senza dover usare la classica struttura `def nome_funzione()`.
 Nel contesto della slide, la lambda viene usata per "impacchettare" la formula matematica della retta ($y = mx + b$) in una variabile chiamata `predict`. Ecco come leggerla:
-
-- **`lambda x:`** definisce l'input della funzione (in questo caso l'anno che vuoi calcolare).
-    
-- **`linear_regression.coef_ * x`**: moltiplica la pendenza ($m$) per l'anno fornito ($x$).
-    
-- **`+ linear_regression.intercept_`**: aggiunge l'intercetta ($b$).
-    
-
-In pratica, invece di scrivere ogni volta l'intera operazione matematica, definisci questa "scorciatoia" così da poter scrivere semplicemente `predict(2019)` e ottenere automaticamente il risultato del calcolo basato sui parametri che il modello ha imparato durante l'addestramento.
+>
+> **`lambda x:`** definisce l'input della funzione (in questo caso l'anno che vuoi calcolare).
+  >  
+>- **`linear_regression.coef_ * x`**: moltiplica la pendenza ($m$) per l'anno fornito ($x$).
+>    
+>- **`+ linear_regression.intercept_`**: aggiunge l'intercetta ($b$).
+>  
+>In pratica, invece di scrivere ogni volta l'intera operazione matematica, definisci questa "scorciatoia" così da poter scrivere semplicemente `predict(2019)` e ottenere automaticamente il risultato del calcolo basato sui parametri che il modello ha imparato durante l'addestramento.
 
 ---
 
