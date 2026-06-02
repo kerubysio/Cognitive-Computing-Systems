@@ -9,17 +9,17 @@ L'analisi del clustering tramite l'algoritmo k-Means introduce uno dei modelli p
 Per organizzare e consolidare la struttura dei diversi gruppi, il modello esegue ciclicamente calcoli di distanza geometrica nello spazio multidimensionale in modo analogo a quanto avviene nella classificazione k-NN (_k-Nearest Neighbors_), associando progressivamente ciascun punto della matrice al centroide matematico più vicino per minimizzare la varianza interna a ogni singolo cluster.
 
 ![[Pasted image 20260520130722 1.png]]
-La seconda parte dello studio sul **k-Means** ne descrive il funzionamento algoritmico iterativo, basato sulla convergenza geometrica attorno ai punti centrali dei gruppi.
+La seconda parte dello studio sul **k-Means** ne descrive il funzionamento algoritmico iterativo, basato sulla convergenza geometrica attorno ai punti centrali dei gruppi. I gruppi prendono il nome di **cluster** mentre i punti centrali si chiamano **centroidi**.
 
 Ecco come si articola l'ottimizzazione del modello:
 
-- **Inizializzazione casuale:** All'avvio, ogni cluster è raggruppato attorno ad un punto detto centroide. L'algoritmo seleziona in modo casuale $k$ campioni dal dataset per fungere da **centroidi** iniziali (i punti centrali temporanei dei cluster).
+- **Inizializzazione casuale:** Inizialmente non esistono nè clusters nè centroidi. L'algoritmo seleziona in modo casuale $k$ elementi dal dataset per fungere da **centroidi** iniziali (i punti centrali **temporanei** dei cluster).
     
-- **Assegnazione dei punti:** I rimanenti campioni della matrice vengono associati al cluster il cui centroide si trova alla distanza geometrica minore.
+- **Assegnazione dei punti:** I rimanenti campioni vengono associati al cluster il cui centroide si trova alla distanza geometrica minore.
     
-- **Aggiornamento iterativo:** I centroidi vengono ricalcolati stabilendo la media matematica delle coordinate di tutti i punti assegnati a quel gruppo. Una volta spostato il centroide, i campioni vengono riassegnati ai nuovi centri più vicini.
+- **Aggiornamento iterativo:** I centroidi di ogni cluster vengono ricalcolati considerando la media matematica delle coordinate di tutti i punti assegnati al singolo cluster. Una volta spostato il centroide, i campioni vengono riassegnati ai nuovi centri più vicini.
 
-Questo processo ciclico si ripete fino a quando le distanze tra i centroidi e i rispettivi punti non vengono **minimizzate** (condizione di convergenza o stabilità). Al termine dell'esecuzione, l'algoritmo restituisce due strutture dati principali:
+Questo processo ciclico si ripete fino a quando le distanze tra i centroidi e i rispettivi punti vengono **minimizzate** (condizione di convergenza o stabilità). Al termine dell'esecuzione, l'algoritmo restituisce due strutture dati principali:
 
 1. Un **array unidimensionale di etichette (labels)**, che indica l'indice del cluster a cui è stato assegnato ciascun campione.
     
@@ -34,7 +34,7 @@ Definito tipicamente come un _"toy dataset"_ per via delle sue dimensioni ridott
 Per prima cosa carichiamo il dataset Iris.
 
 ![[Pasted image 20260520131645.png]]
-Ecc
+Eccone le caratteristiche principali.
 
 ![[Pasted image 20260520131958.png]]
 Possiamo controllare alcune caratteristiche così.
@@ -68,9 +68,9 @@ Il blocco di codice e il relativo output evidenziano i seguenti passaggi:
     
     - **`count`:** Conferma la presenza di 150 campioni totali per ogni colonna, escludendo la presenza di valori nulli o mancanti.
         
-    - **`mean` e `std`:** Rappresentano rispettivamente la media aritmetica e la deviazione standard (indice di dispersione). Si nota ad esempio come la lunghezza dei petali abbia una variabilità molto più marcata ($\text{std} = 1.77$) rispetto alla larghezza dei sepali ($\text{std} = 0.44$).
+    - **`mean` e `std`:** Rappresentano rispettivamente la media aritmetica e la deviazione standard (indice di dispersione).
         
-    - **I cinque numeri di sintesi (`min`, `25%`, `50%`, `75%`, `max`):** Mostrano i valori minimi e massimi insieme ai tre quartili (dove il $50\%$ corrisponde alla mediana). Questa scomposizione permette di intuire la forma della distribuzione e l'estensione dei dati per ciascun attributo morfologico del fiore.
+    - **I cinque numeri di sintesi (`min`, `25%`, `50%`, `75%`, `max`):** Mostrano i valori minimi e massimi insieme ai tre quartili (dove il $50\%$ corrisponde alla mediana). 
 
 ![[Pasted image 20260520133026.png]]
 La slide mostra l'applicazione del metodo `describe()` su una variabile categorica (la colonna `species`) anziché su colonne numeriche, evidenziando una differenza fondamentale nel modo in cui Pandas riassume i dati non quantitativi.
@@ -79,15 +79,17 @@ L'analisi dello snippet e delle note mette in luce i seguenti punti:
 
 - **Statistiche per dati categorici:** Quando viene invocato su una colonna di testo (tipo `object`), il metodo `iris_df['species'].describe()` restituisce metriche specifiche per stringhe o categorie:
     
-    - **`count`:** Indica il numero totale di valori non nulli presenti (150).
+    - **`count`:** Indica il numero totale di valori non nulli presenti.
         
     - **`unique`:** Conferma la presenza di esattamente 3 categorie distinte (corrispondenti alle tre specie di Iris).
         
-    - **`top`:** Mostra la stringa che appare con maggiore frequenza nel dataset (in questo caso `virginica`).
+    - **`top`:** Mostra la stringa che appare con maggiore frequenza nel dataset.
         
     - **`freq`:** Indica quante volte compare l'elemento più frequente (50). Poiché il dataset è perfettamente bilanciato con 50 campioni per ciascuna delle tre specie, l'algoritmo ha selezionato arbitrariamente una delle tre come "top" evidenziando la frequenza di 50.
         
-- **Nota concettuale sul Machine Learning:** Il testo sottolinea come, grazie al dataset pre-etichettato, si conosca in anticipo il numero esatto delle classi (pari a 3). Questa condizione rappresenta un'eccezione didattica: nell'apprendimento non supervisionato reale (_unsupervised machine learning_), i dati sono privi di etichette e il numero ideale di raggruppamenti non è noto a priori, ma deve essere stimato o dedotto attraverso l'analisi dei dati stessi.
+- **Nota concettuale sul Machine Learning:** Il testo sottolinea come, grazie al dataset pre-etichettato, si conosca in anticipo il numero esatto delle classi. Questa condizione rappresenta un'eccezione didattica: nell'apprendimento non supervisionato reale, i dati sono privi di etichette e il numero ideale di raggruppamenti non è noto a priori, ma deve essere stimato o dedotto attraverso l'analisi dei dati stessi.
+
+---
 
 ![[Pasted image 20260520133308.png]]
 ![[Pasted image 20260520133432 1.png|609]]
@@ -96,7 +98,7 @@ Il concetto e i passaggi del codice si strutturano nel seguente modo:
 
 - **Il problema della dimensionalità:** Avendo a disposizione 4 caratteristiche morfologiche distinte, risulta impossibile proiettarle simultaneamente all'interno di un unico grafico standard. Per superare questo limite geometrico, l'approccio ideale consiste nel confrontare le feature a coppie (_pairs_).
     
-- **La griglia di grafici:** La funzione `sns.pairplot` genera automaticamente una matrice simmetrica di grafici cartesiani (una griglia). Nelle intersezioni tra variabili diverse vengono disegnati dei diagrammi di dispersione (_scatter plots_), mentre lungo la diagonale principale, dove una feature incontrerebbe se stessa, la libreria traccia tipicamente istogrammi o curve di densità (KDE) per mostrare la distribuzione univariata del singolo attributo.
+- **La griglia di grafici:** La funzione `sns.pairplot` genera automaticamente una matrice simmetrica di grafici cartesiani. Nelle intersezioni tra variabili diverse vengono disegnati dei diagrammi di dispersione (_scatter plots_), mentre lungo la diagonale principale, dove una feature incontrerebbe se stessa, la libreria traccia tipicamente istogrammi o curve di densità (KDE) per mostrare la distribuzione univariata del singolo attributo.
     
 - **Configurazione e parametri del codice:**
     
@@ -106,6 +108,8 @@ Il concetto e i passaggi del codice si strutturano nel seguente modo:
 
 ![[Pasted image 20260520134245.png]]
 Togliendo l'argument hue, ottengo il diagramma con un solo colore perchè pairplot non sa distinguere da solo tra le varie specie.
+
+---
 
 ![[Pasted image 20260520134433.png]]
 La slide mostra l'effettiva inizializzazione dell'algoritmo **k-Means** per raggruppare i campioni dell'Iris Dataset.
@@ -117,7 +121,8 @@ Il blocco descrive la logica di creazione dell'estimatore e la gestione dei suoi
 ![[Pasted image 20260520134800.png]]
 La slide illustra la fase di addestramento (_fitting_) del modello k-Means e descrive gli attributi principali che l'oggetto espone una volta completata la convergenza geometrica.
 
-**Esecuzione dell'algoritmo:** L'istruzione `kmeans.fit(iris.data)` avvia l'ottimizzazione iterativa passando come unico argomento la matrice numerica delle feature. Trattandosi di un approccio non supervisionato, non viene fornito alcun vettore dei target reali. L'output mostra i parametri di default di scikit-learn, tra cui l'inizializzazione ottimizzata `init='k-means++'` e il limite massimo di iterazioni `max_iter=300`.
+**Esecuzione dell'algoritmo:** L'istruzione `kmeans.fit(iris.data)` avvia l'ottimizzazione iterativa passando come unico argomento la matrice numerica delle feature. Trattandosi di un approccio non supervisionato, non viene fornito alcun vettore dei target reali.
+L'output mostra i parametri di default di scikit-learn, tra cui l'inizializzazione ottimizzata `init='k-means++'` e il limite massimo di iterazioni `max_iter=300`.
 
 ![[Pasted image 20260520172621.png]]
 ![[Pasted image 20260520172949.png|637]]
@@ -127,9 +132,12 @@ Per valutare la bontà del clustering effettuato in modo cieco da k-Means, si co
     
 - **Condizione di clustering perfetto:** Se l'algoritmo avesse separato i dati in modo impeccabile, l'array `labels_` dovrebbe presentare tre blocchi omogenei da 50 elementi ciascuno, dove ogni blocco contiene un unico indice numerico distinto.
 
+>[!NOTE]
 > **Nota Fondamentale:** Gli indici numerici assegnati da k-Means (`0`, `1`, `2`) vengono scelti in modo del tutto arbitrario in base al posizionamento iniziale dei centroidi e **non hanno alcuna relazione semantica** con i valori codificati nell'array `target` originario. Ad esempio, il cluster che raccoglie le _Setose_ potrebbe essere etichettato dall'estimatore con l'indice `1` anziché `0`, senza che questo costituisca un errore di segmentazione.
 
 In uno scenario reale di apprendimento non supervisionato (dove i dati sono nativamente privi di etichette), non è possibile effettuare questo tipo di confronto diretto; la validità delle classi predette deve essere determinata analizzando le caratteristiche strutturali dei gruppi o ricorrendo alla valutazione di un esperto di dominio.
+
+---
 
 ![[Pasted image 20260520173100.png]]
 Per ridurre la dimensione di questo dataset da 4 a 2 dimensioni, useremo un estimatore PCA, non ci interessano i dettagli del suo algoritmo.
@@ -169,6 +177,8 @@ I centroidi calcolati da k-Means si trovano originariamente nello spazio a 4 dim
 Dove s ne indica la dimensione. Otteniamo così i seguenti grafici:
 
 ![[Pasted image 20260520174227.png|615]]
+
+---
 
 ![[Pasted image 20260520174602.png]]
 Come si sceglie il miglior algoritmo di clustering allora?

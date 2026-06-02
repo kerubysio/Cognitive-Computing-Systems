@@ -23,7 +23,8 @@ La descrizione ufficiale delle caratteristiche del California Housing dataset mo
 
 ![[Pasted image 20260519194739.png]]
 Esploriamo il Dataset con Pandas.
-L'esplorazione del dataset viene avviata importando la libreria Pandas e configurando le opzioni di visualizzazione per migliorare la leggibilità dei dati numerici nel notebook. Attraverso l'istruzione `pd.set_option('display.precision', 4)`, la precisione di stampa dei numeri a virgola mobile viene fissata a quattro cifre decimali, mentre i comandi commentati suggeriscono impostazioni opzionali per forzare la visualizzazione in terminale di un massimo di 9 colonne senza mandare a capo il testo. Operativamente, la struttura dati tabulare viene generata invocando il costruttore `pd.DataFrame`, a cui vengono passati la matrice dei campioni `california.data` e l'elenco delle etichette dei rispettivi attributi `california.feature_names`. Subito dopo, per completare l'insieme informativo, viene inserita una nuova colonna denominata `MedHouseValue` associandola a un oggetto Pandas Series contenente i valori target reali dell'archivio, ovvero `california.target`, consentendo così di manipolare l'intero dataset, comprensivo di feature e riscontri, all'interno di un unico frame logico integrato.
+L'esplorazione del dataset viene avviata importando la libreria Pandas e configurando le opzioni di visualizzazione per migliorare la leggibilità dei dati numerici nel notebook. Attraverso l'istruzione `pd.set_option('display.precision', 4)`, la precisione di stampa dei numeri a virgola mobile viene fissata a quattro cifre decimali, mentre i comandi commentati suggeriscono impostazioni opzionali per forzare la visualizzazione in terminale di un massimo di 9 colonne senza mandare a capo il testo.
+Operativamente, la struttura dati tabulare viene generata invocando il costruttore `pd.DataFrame`, a cui vengono passati la matrice dei campioni `california.data` e l'elenco delle etichette dei rispettivi attributi `california.feature_names`. Subito dopo, per completare l'insieme informativo, viene inserita una nuova colonna denominata `MedHouseValue` associandola a un oggetto Pandas Series contenente i valori target reali dell'archivio, ovvero `california.target`, consentendo così di manipolare l'intero dataset, comprensivo di feature e riscontri, all'interno di un unico frame logico integrato.
 
 ![[Pasted image 20260519194944.png]]
 Osservo le prime 5 righe.
@@ -37,9 +38,9 @@ Al fine di rendere i grafici più chiari, leggibili ed evitare un sovraffollamen
 Sui dati così ridotti vengono poi generati diversi diagrammi di dispersione (_scatter plots_), all'interno dei quali ogni grafico mappa una specifica caratteristica numerica sull'asse delle ascisse (asse x) e il valore mediano delle abitazioni sull'asse delle ordinate (asse y), evidenziando visivamente tendenze, correlazioni o la presenza di eventuali valori fuori norma.
 
 ![[Pasted image 20260519195837.png]]
-![[Pasted image 20260519200249.png|410]]
-![[Pasted image 20260519200218 1.png|412]]
-![[Pasted image 20260519200417.png|412]]
+![[Pasted image 20260519200249.png|671]]
+![[Pasted image 20260519200218 1.png|674]]
+![[Pasted image 20260519200417.png|676]]
 Il codice di sopra serve a produrre questi diagrammi (sul libro ce ne sono altri ma il concetto è sempre lo stesso).
 
 ![[Pasted image 20260519200602.png]]
