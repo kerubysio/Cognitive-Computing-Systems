@@ -5,7 +5,6 @@ FONTE:
 ---
 
 ![[Pasted image 20260522171028 1.png]]
-
 Python
 
 ```
@@ -21,7 +20,6 @@ All'interno della tabella si distinguono tre colonne fondamentali:
 - **Output Shape:** Specifica la dimensionalità dei tensori propagati in avanti al livello successivo. La presenza del valore `None` come prima coordinata indica che la dimensione del batch (_batch size_) non è prefissata rigidamente a priori; il modello è configurato in modo dinamico per elaborare un numero arbitrario di campioni di addestramento o di test all'interno del flusso di input.
     
 - **Param #:** Rappresenta il numero totale di pesi sinaptici (_weights_) e bias che l'algoritmo deve apprendere e aggiornare iterativamente tramite backpropagation durante la fase di training.
-    
 
 Nonostante questa specifica convnet sia considerata un'architettura relativamente piccola e minimale, progettata per elaborare immagini minuscole (i campioni MNIST sono inferiori a un quarto della dimensione di una comune icona da smartphone), la rete richiede l'ottimizzazione di quasi 500.000 parametri totali. La stragrande maggioranza di questi parametri si concentra nel primo livello completamente connesso (`dense`), in cui la linearizzazione operata dal livello `flatten` genera un'elevata densità di interconnessioni verso i 128 neuroni successivi. Questa evidenza strutturale sottolinea l'esplosione della complessità computazionale e la conseguente richiesta di hardware parallelo quando si passa dall'elaborazione di micro-immagini a flussi video ad alta risoluzione (4K) o a immagini scattate da moderne fotocamere digitali.
 
@@ -51,7 +49,6 @@ Il metodo richiede la parametrizzazione di tre argomenti principali:
 - **`metrics=['accuracy']`**: Definisce la lista di metriche da monitorare per valutare il modello durante le fasi di training e testing. L'accuratezza esprime semplicemente la percentuale di immagini classificate correttamente. A differenza della loss function, questa metrica serve esclusivamente come indicatore di comprensione immediata per lo sviluppatore e non viene utilizzata direttamente dall'ottimizzatore per calcolare i gradienti.
 
 ![[Pasted image 20260522180346.png]]
-
 Python
 
 ```
@@ -64,10 +61,7 @@ L'addestramento vero e proprio di un modello in Keras viene avviato invocando il
     
 - **`batch_size=64`:** Specifica la dimensione del lotto, ovvero il numero di campioni da processare simultaneamente prima di calcolare il gradiente e aggiornare i pesi del modello. Nella maggior parte delle architetture si tende a impostare questo valore utilizzando potenze di 2, generalmente comprese in un intervallo che va da 32 a 512.
     
-- **`validation_split=0.1`:** Indica al modello di isolare e mettere da parte l'ultimo 10% dei campioni di addestramento forniti per utilizzarli esclusivamente come set di validazione.
-    
-
-Al termine di ciascuna epoca, la rete sfrutta questi campioni di validazione per generare delle predizioni e calcolare in modo trasparente i relativi valori di loss e accuratezza di validazione (_validation loss and accuracy_). Il monitoraggio di queste metriche permette allo sviluppatore di capire se sia necessario modificare la struttura interna dei livelli, sintonizzare gli iperparametri del metodo `fit` o alterare la composizione stessa dei layer all'interno della rete. In alternativa a una suddivisione automatica, è possibile passare un set di validazione esterno e già separato sfruttando l'apposito argomento `validation_data`.
+- **`validation_split=0.1`:** Indica al modello di isolare e mettere da parte l'ultimo 10% dei campioni di addestramento forniti per utilizzarli esclusivamente come set di validazione. Al termine di ciascuna epoca, la rete sfrutta questi campioni di validazione per generare delle predizioni e calcolare in modo trasparente i relativi valori di loss e accuratezza di validazione (_validation loss and accuracy_). Il monitoraggio di queste metriche permette allo sviluppatore di capire se sia necessario modificare la struttura interna dei livelli, sintonizzare gli iperparametri del metodo `fit` o alterare la composizione stessa dei layer all'interno della rete. In alternativa a una suddivisione automatica, è possibile passare un set di validazione esterno e già separato sfruttando l'apposito argomento `validation_data`.
 
 ![[Pasted image 20260522180645.png]]
 
@@ -132,7 +126,6 @@ L'analisi del primo campione di test evidenzia la precisione del modello:
 - **Predizione dominante:** La classe associata all'indice 7 mostra un valore di probabilità schiacciante pari al **99.9845504761%**. Tutte le altre classi presentano valori infinitesimali o prossimi allo zero (la seconda percentuale più "elevata" si riscontra all'indice 2 con appena lo $0.0129567663\%$). Questo indica che il modello ha classificato l'immagine come un 7 con un livello di confidenza pressoché assoluto.
 
 ![[Pasted image 20260522184716 1.png]]
-
 Per comprendere quali tipologie di cifre mettono in difficoltà il modello, è utile individuare e analizzare visivamente le immagini classificate in modo errato. Ad esempio, se si nota che il modello sbaglia sistematicamente a predire il numero 8, potrebbe essere necessario integrare il dataset di addestramento con un numero maggiore di campioni rappresentanti quella specifica cifra.
 
 Per determinare in modo programmatico se una singola predizione sia corretta o meno, si procede confrontando due valori geometrici:
@@ -234,7 +227,7 @@ Oltre a queste procedure standard, l'ecosistema mette a disposizione funzioni ad
 ---
 
 ![[Pasted image 20260522195645.png]]
-Comprendere appieno l'architettura intima e tutti i dettagli operativi delle reti neurali profonde è un compito notoriamente complesso. Questa natura intrinsecamente opaca genera sfide significative nelle fasi di testing, debugging, aggiornamento dei modelli e ottimizzazione degli algoritmi. I modelli di deep learning estraggono e apprendono un numero mastodontico di feature che, molto spesso, non risultano palesi o facilmente interpretabili a livello umano.
+Comprendere appieno l'architettura delle reti neurali profonde è un compito notoriamente complesso. Questa natura intrinsecamente opaca genera sfide significative nelle fasi di testing, debugging, aggiornamento dei modelli e ottimizzazione degli algoritmi. I modelli di deep learning estraggono e apprendono un numero mastodontico di feature che, molto spesso, non risultano palesi o facilmente interpretabili a livello umano.
 
 Per ovviare a queste limitazioni, Google mette a disposizione **TensorBoard**, uno strumento di dashboard interattivo progettato per visualizzare in modo chiaro le reti neurali implementate in TensorFlow e Keras. L'utilizzo di questa suite diagnostica offre numerosi vantaggi:
 
