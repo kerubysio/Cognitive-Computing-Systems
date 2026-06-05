@@ -3,15 +3,12 @@ DATA: 13/03/2026
 FONTE: Videolezione (slide screenshottate)
 
 ---
-
 ![[Pasted image 20260401204112.png|697]]
 ![[Pasted image 20260401204420.png|695]]
-
 Vogliamo capire se la sagoma è un sopravvissuto a cui mandare dei soccorsi oppure no.
 In questo caso si parla di "Problema cognitivo", perchè bisogna prendere delle decisioni sotto incertezza assumendosi le responsabilità delle scelte intraprese.
 
 ![[Pasted image 20260401205102.png]]
-
 Questa slide evidenzia la distinzione concettuale tra i processi di elaborazione dati e la vera cognizione, sottolineando che la **percezione** (o la capacità di un modello di identificare pattern) non equivale alla **conoscenza** profonda. Il concetto viene declinato su tre livelli: la capacità di fare previsioni non implica una reale comprensione del fenomeno, l'automazione di un compito non coincide con l'intelligenza e, soprattutto, un'elevata accuratezza statistica non garantisce l'affidabilità del sistema in ogni contesto. In sintesi, viene lanciato un monito critico nel valutare i sistemi AI, ricordando che l'eccellenza nelle prestazioni numeriche non deve essere confusa con una consapevolezza di tipo umano o con una sicurezza assoluta del modello.
 
 ![[Pasted image 20260401205348.png]]
@@ -43,8 +40,6 @@ L'equazione **Cognizione = Stato di Credenze** esprime l'idea che un sistema cog
 
 ![[Pasted image 20260402124736.png]]
 L'**aggiornamento della credenza** è il cuore operativo del ciclo cognitivo, dove il valore calcolato come **Posterior** smette di essere un semplice risultato numerico e diventa il **nuovo stato cognitivo** del sistema. Attraverso la formula che combina la conoscenza pregressa (**Prior**) con la verosimiglianza dei nuovi dati (**Likelihood**) normalizzati rispetto all'**Evidenza**, il sistema evolve la propria percezione della realtà. Questo processo garantisce la continuità dell'apprendimento: ciò che era una conclusione in un determinato momento (il _posterior_ attuale) fungerà da punto di partenza (la _prior_ futura) per l'osservazione successiva, permettendo al sistema di affinare costantemente la propria interpretazione del mondo.
-
----
 
 ![[Pasted image 20260402124843.png]]
 La **visualizzazione dell'aggiornamento bayesiano** mostra graficamente la relazione tra la verosimiglianza del dato osservato (**Likelihood**) e la nuova credenza generata (**Posterior**). La curva illustra come, all'aumentare della probabilità che un certo dato $D$ sia spiegato dall'ipotesi $H$, cresca proporzionalmente la fiducia del sistema in quell'ipotesi stessa. In un sistema cognitivo, questo grafico rappresenta la sensibilità del modello all'evidenza: una pendenza più o meno ripida indica quanto velocemente il sistema è disposto a cambiare idea o a consolidare la propria "certezza" in risposta a ciò che osserva nell'ambiente.
