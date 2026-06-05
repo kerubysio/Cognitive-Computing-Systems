@@ -1,6 +1,7 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
 DATA: 13/03/2026
 FONTE: Videolezione (slide screenshottate)
+RIASSUNTO: [[Lezione 1 - Riassunto]]
 
 ---
 ![[Pasted image 20260401204112.png|697]]
@@ -19,10 +20,11 @@ Una differenza fondamentale tra la pipeline ML e un sistema CCS sta proprio nel 
 ![[Pasted image 20260402123659.png]]
 L'**Architettura Cognitiva Completa** descrive il flusso logico attraverso cui un sistema intelligente elabora le informazioni.
 Partendo dal **Sensing** per l'acquisizione dei dati grezzi, questo percorso evolve attraverso diverse fasi cruciali: la **Percezione** interpreta gli stimoli, la **Rappresentazione** li organizza in modelli concettuali, e il **Ragionamento** (Reasoning) permette di trarre conclusioni logiche. Il processo è alimentato dal continuo **Apprendimento** (Learning), che porta alla fase di **Decisione** finale.
-Fondamentale è la presenza di un **Trust Layer**, ossia uno strato di fiducia e sicurezza che garantisce che l'intero ciclo operativo sia affidabile, etico e robusto prima che il sistema interagisca con il mondo esterno.
+Fondamentale è la presenza di un **Trust Layer**, ossia un componente architetturale che si interpone tra i modelli di intelligenza artificiale e l'applicazione finale rivolta all'utente.
+Il suo scopo è mitigare i rischi intrinseci dei modelli probabilistici, garantendo che le interazioni e le decisioni generate dal sistema siano sicure, accurate, etiche e conformi alle normative. Agisce come un filtro bidirezionale, controllando sia i prompt in entrata (ad esempio per impedire che il sistema elabori dati personali immessi dall'utente) che le risposte in uscita (ad esempio per eliminare eventuali bias cognitivi e risposte potenzialmente offensive o che potrebbero mettere in pericolo l'utente finale).
 
 ![[Pasted image 20260402123923.png]]
-Il **Modello Bayesiano della Cognizione** propone che l'intelligenza funzioni come un meccanismo di **inferenza probabilistica** anziché come un semplice classificatore rigido. Secondo questa visione, la cognizione è un processo dinamico di aggiornamento delle conoscenze: il sistema parte da convinzioni preesistenti (**prior**), analizza nuovi dati o prove (**evidenze**) e integra queste informazioni per ottenere una visione aggiornata della realtà (**posterior**). In sostanza, il modello descrive la mente come una macchina statistica che impara e riduce l'incertezza attraverso il costante raffinamento delle probabilità basato sull'esperienza.
+Il **Modello Bayesiano della Cognizione** propone che l'intelligenza funzioni come un meccanismo di **inferenza probabilistica**. Secondo questa visione, la cognizione è un processo dinamico di aggiornamento delle conoscenze: il sistema parte da convinzioni preesistenti (**prior**), analizza nuovi dati o prove (**evidenze**) e integra queste informazioni per ottenere una visione aggiornata della realtà (**posterior**). In sostanza, il modello descrive la mente come una macchina statistica che impara e riduce l'incertezza attraverso il costante raffinamento delle probabilità basato sull'esperienza.
 
 ![[Pasted image 20260402124123.png]]
 Il **Modello Bayesiano** ridefinisce la cognizione non come una classificazione statica (assegnazione di etichette), ma come un **aggiornamento continuo di credenze** espresse in termini probabilistici. In questo paradigma, l'incertezza non è un errore da eliminare, ma una variabile gestita esplicitamente: il sistema modula la propria fiducia in un'ipotesi man mano che riceve nuove informazioni.
@@ -31,12 +33,13 @@ Questo approccio costituisce il fondamento dei sistemi cognitivi moderni, poich�
 ![[Pasted image 20260402124224.png]]
 Il **Teorema di Bayes** fornisce la base matematica per il ragionamento sotto incertezza nei sistemi cognitivi, permettendo di calcolare la probabilità di un'ipotesi ($H$) alla luce di un nuovo dato osservato ($D$). La formula
 
-$$P(H|D) = \frac{P(D|H)P(H)}{P(D)}$$
+$$P(H|D) = \frac{P(D|H)\cdot P(H)}{P(D)}$$
 
 esprime come la credenza aggiornata (**Posterior**) derivi dal prodotto tra la probabilità iniziale (**Prior**) e la verosimiglianza del dato osservato rispetto all'ipotesi (**Likelihood**), normalizzato per la probabilità totale del dato stesso. Questo meccanismo di **aggiornamento delle credenze** trasforma il calcolo statistico in un vero e proprio processo di apprendimento continuo, dove ogni nuova evidenza raffina o corregge la comprensione del mondo da parte del sistema.
 
 ![[Pasted image 20260402124601.png]]
-L'equazione **Cognizione = Stato di Credenze** esprime l'idea che un sistema cognitivo non abbia mai un accesso diretto e assoluto alla realtà oggettiva, ma operi esclusivamente attraverso **distribuzioni di probabilità**. In questo modello, il sistema osserva solo segnali rumorosi o parziali e deve **inferire lo stato più plausibile** del mondo esterno. Di conseguenza, ogni scelta non avviene sulla realtà stessa, ma in uno **spazio delle credenze** (_belief space_): il sistema prende decisioni basandosi sulla configurazione di probabilità che ritiene più verosimile in quel momento, accettando intrinsecamente il margine di incertezza tipico di ogni processo cognitivo avanzato.
+L'equazione **Cognizione = Stato di Credenze** esprime l'idea che un sistema cognitivo non abbia mai un accesso diretto e assoluto alla realtà oggettiva, ma operi esclusivamente attraverso **distribuzioni di probabilità**. In questo modello, il sistema osserva solo segnali rumorosi o parziali e deve **inferire lo stato più plausibile** del mondo esterno.
+Di conseguenza, ogni scelta non avviene sulla realtà stessa, ma in uno **spazio delle credenze** (_belief space_): il sistema prende decisioni basandosi sulla configurazione di probabilità che ritiene più verosimile in quel momento, accettando intrinsecamente il margine di incertezza tipico di ogni processo cognitivo avanzato.
 
 ![[Pasted image 20260402124736.png]]
 L'**aggiornamento della credenza** è il cuore operativo del ciclo cognitivo, dove il valore calcolato come **Posterior** smette di essere un semplice risultato numerico e diventa il **nuovo stato cognitivo** del sistema. Attraverso la formula che combina la conoscenza pregressa (**Prior**) con la verosimiglianza dei nuovi dati (**Likelihood**) normalizzati rispetto all'**Evidenza**, il sistema evolve la propria percezione della realtà. Questo processo garantisce la continuità dell'apprendimento: ciò che era una conclusione in un determinato momento (il _posterior_ attuale) fungerà da punto di partenza (la _prior_ futura) per l'osservazione successiva, permettendo al sistema di affinare costantemente la propria interpretazione del mondo.
@@ -138,7 +141,7 @@ Nel **Reinforcement Learning**, il sistema apprende questa politica interagendo 
 Il **POMDP (Partially Observable Markov Decision Process)** rappresenta l'estensione realistica dei modelli decisionali classici, applicata a contesti in cui il sistema non ha mai una conoscenza perfetta e completa dello stato del mondo. A differenza di un MDP standard, dove si assume di conoscere esattamente la situazione attuale, in un POMDP l'agente riceve solo osservazioni parziali o rumorose (ad esempio, sensori disturbati o visibilità ridotta). Questo costringe il sistema a non operare sulla realtà diretta, ma all'interno dello **spazio delle credenze (_Belief Space_)**.
 Invece di decidere basandosi su uno "stato certo", il sistema decide basandosi su una distribuzione di probabilità che descrive quanto sia verosimile trovarsi in ciascuno dei possibili stati del mondo.
 
-Il cuore del POMDP è il **Belief State $b(s)$**, che sintetizza l'intera storia delle azioni passate e delle osservazioni ricevute. Ogni volta che il sistema compie un'azione e ottiene un nuovo dato, esegue un **aggiornamento bayesiano** per calcolare la nuova credenza $b'(s')$. 
+Il cuore del POMDP è il **Belief Space $b(s)$**, che sintetizza l'intera storia delle azioni passate e delle osservazioni ricevute. Ogni volta che il sistema compie un'azione e ottiene un nuovo dato, esegue un **aggiornamento bayesiano** per calcolare la nuova credenza $b'(s')$. 
 Formalmente, questa operazione combina la probabilità di transizione (dove il sistema pensa di essere finito dopo l'azione) con la probabilità di osservazione (quanto il nuovo dato sia coerente con la posizione presunta).
 La formula risultante permette alla "mente" artificiale di affinare costantemente la propria mappa interna delle probabilità. In questo modo, la cognizione diventa un processo dinamico dove ogni decisione viene presa pesando non solo l'utilità dell'azione, ma anche quanto quell'azione possa aiutare a ridurre l'incertezza futura sul mondo.
 Il sistema non sa dove si trova, sa solo cosa crede.
