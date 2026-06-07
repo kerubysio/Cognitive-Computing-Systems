@@ -9,23 +9,21 @@ Riesce ad interagire in maniera naturale con l'uomo, ed è capace di spiegare i 
 Pertanto ogni risposta è accompagnata da un valore di affidabilità che indica quanto il sistema è sicuro della risposta data.
 
 Una pipeline cognitiva è costituita da questi passaggi:
-- Sensing: raccolta di dati grezzi
-- Perception: interpretazione dei dati
-- Representation: incapsulo i dati in modelli
-- Reasoning: ragionamento sui dati
-- Learning: apprendimento
-- Decision: decisione finale
-- Trust Layer: controlla sicurezza prompt in input e risposte
+- **Sensing**: raccolta di dati grezzi
+- **Perception**: interpretazione dei dati
+- **Representation**: incapsulo i dati in modelli
+- **Reasoning**: ragionamento sui dati
+- **Learning**: apprendimento
+- **Decision**: decisione finale
+- **Trust Layer**: controlla la sicurezza dei prompt in input e delle risposte in output
 
 ## Il modello Bayesiano della Cognizione
 
-Il modello Bayesiano della cognizione propone che l'intelligenza funzioni come un processo di inferenza probabilistica: si parte da alcune convinzioni di base, dette prior, dopodiché si raccolgono nuovi dati o prove, grazie ai quali viene effettuato un processo di inferenza che ci permette di giungere ad una nuova conoscenza, detta posterior.
+Il modello Bayesiano della cognizione propone che l'**intelligenza** funzioni come un processo di **inferenza probabilistica**: si parte da alcune convinzioni di base, dette **prior**, dopodiché si raccolgono nuovi **dati o prove**, grazie ai quali viene effettuato un processo di inferenza che ci permette di giungere ad una nuova conoscenza, detta **posterior**.
 
->La cognizione è aggiornamento di credenze (e delle relative probabilità)
+>La **cognizione** è **aggiornamento di credenze** (e delle relative probabilità)
 
-Grazie a questo nuovo approccio un CCS può operare in ambienti reali, dove 
-non esiste una soluzione o risposta univoca e i dati sono spesso ambigui.
-
+Grazie a questo nuovo approccio un CCS può operare in ambienti reali, dove non esiste una soluzione o risposta univoca e i dati sono spesso ambigui.
 #### Teorema di Bayes
 
 Il Teorema di Bayes ci permette di calcolare la probabilità di un'ipotesi H alla luce di un nuovo dato osservato D:
@@ -51,9 +49,7 @@ Lo spazio delle credenze di un CCS prende il nome di **belief space**.
 
 Proprio per questo, i CCS trovano ampio spazio nei sistemi safety-critical, dove è indispensabile che ogni risposta sia accompagnata da un grado di incertezza così da poter richiedere intervento umano se scende sotto una certa soglia.
 
-Proprio il belief state costituisce la principale differenza tra CCS e Deep Learning. Un sistema DL, infatti, è più vicino ad una funzione matematica che mappa ad ogni input un output (ad ogni elemento del dataset associa un'etichetta) cercando di massimizzare l'accuratezza delle risposte, mentre un sistema cognitivo integra e rende parte fondamentale di sè proprio quell'incertezza che un sistema DL cerca di 
-minimizzare (anche rischiando di fornire risposte sbagliate con convinzione).
-
+Proprio il belief state costituisce la principale differenza tra CCS e Deep Learning. Un sistema DL, infatti, è più vicino ad una funzione matematica che mappa ad ogni input un output (ad ogni elemento del dataset associa un'etichetta) cercando di massimizzare l'accuratezza delle risposte, mentre un sistema cognitivo integra e rende parte fondamentale di sè proprio quell'incertezza che un sistema DL cerca di minimizzare (anche rischiando di fornire risposte sbagliate con convinzione).
 ### Explainable AI
 
 >Un sistema intelligente non produce risposte.
@@ -61,7 +57,6 @@ minimizzare (anche rischiando di fornire risposte sbagliate con convinzione).
 
 Nel paradigma dell'Explainable AI (XAI), l'intelligenza è vista come la capacità di fornire una spiegazione per il proprio output.
 Questo permette all'utente di riconoscere bias e allucinazioni, rendendo gli errori gestibili, in contrapposizione ai sistemi black box dove possono passare inosservati.
-
 # Architettura cognitiva
 
 - Data Layer: raccolta dei dati
@@ -69,7 +64,6 @@ Questo permette all'utente di riconoscere bias e allucinazioni, rendendo gli err
 - Cognitive Layer: ragionamento
 - Decision Layer: decisione tramite Reinforcement Learning e modelli MDP
 - Trust Layer: gestione della sicurezza (explainability e controlli input/output)
-
 ## Decisione ottimale - Teoria dell'Utilità
 
 Ma come viene effettuata la decisione nel Decision Layer?
@@ -77,8 +71,7 @@ Per rispondere a questa domanda, si utilizza la Teoria dell'Utilità.
 
 >Secondo la Teoria dell'Utilità, l'azione ottima a* è quella che massimizza il guadagno atteso.
 
-Nei sistemi safety critical, ad esempio, un CCS agisce come un co-pilot cognitivo che si occupa di effettuare un continuo trade-off tra rischi e benefici cercando di raggiungere l'obiettivo senza intraprendere rischi eccessivi.
-Ogni scelta tiene conto delle conseguenze.
+Nei sistemi safety critical, ad esempio, un CCS agisce come un co-pilot cognitivo che si occupa di effettuare un continuo trade-off tra rischi e benefici cercando di raggiungere l'obiettivo senza intraprendere rischi eccessivi. Ogni scelta tiene conto delle conseguenze.
 
 #### Calcolo dell'azione ottimale
 
@@ -99,7 +92,7 @@ Un sistema ML sceglierebbe sempre l'azione più probabile, ossia quella con più
 
 ### Markov Decision Process (MDP)
 
-Tuttavia un sistema cognitivomodello non può prendere decisioni basandosi solo su quale sia l'azione ottima ad un certo istante, ma ogni azione deve fare parte di un piano d'azione. Detto in altre parole, un sistema di intelligenza artificiale deve prendere decisioni sequenziali in ambienti dinamici e incerti.
+Tuttavia un sistema cognitivo non può prendere decisioni basandosi solo su quale sia l'azione ottima ad un certo istante, ma ogni azione deve fare parte di un piano d'azione. Detto in altre parole, un sistema di intelligenza artificiale deve prendere decisioni sequenziali in ambienti dinamici e incerti.
 
 Per fare ciò, ci si appoggia al Markov Decision Process, il quale si basa su:
 - Stati (S): situazione attuale del mondo
@@ -115,16 +108,12 @@ L'MDP si basa sulle equazioni di Bellman:
 
 In cui il valore di uno stato V(s) viene espresso dalla somma del guadagno attuale con la sommatoria, pesata da gamma, dei prodotti tra la funzione di transizione e il valore atteso di tutti i futuri stati raggiungibili.
 P(s'|s, a) indica la probabilità che arrivi nello stato s' se intraprendo l'azione a partendo da s (si legge "s' condizionato da s, dato a").
-
 #### Partially Observable Markov Decision Process (POMDP)
 
 In un MDP classico si assume di conoscere la realtà al 100%.
-Nei sistemi incerti, si usa il Partially Observable Markov Decision Process, in cui si 
-parte dall'assunto che i dati siano incompleti o disturbati (sensori mancanti, rotti o imperfetti). Viene utilizzato per i sistemi che si basano sul belief space, come i CCS.
+Nei sistemi incerti, si usa il Partially Observable Markov Decision Process, in cui si parte dall'assunto che i dati siano incompleti o disturbati (sensori mancanti, rotti o imperfetti). Viene utilizzato per i sistemi che si basano sul belief space, come i CCS.
 
-Il cuore del POMDP è il Belief Space, il quale contiene tutta la storia delle azioni passate intraprese e delle osservazioni ricevute.
-Dopo ogni azione, se il sistema riceve un nuovo dato, esegue un aggiornamento bayesiano che gli permette di aggiornare il belief space.
-
+Il cuore del POMDP è il Belief Space, il quale contiene tutta la storia delle azioni passate intraprese e delle osservazioni ricevute. Dopo ogni azione, se il sistema riceve un nuovo dato, esegue un aggiornamento bayesiano che gli permette di aggiornare il belief space.
 ## Il Continual Learning
 
 Il Continual Learning cerca di fare in modo che un sistema cognitivo apprenda nuove task e informazioni senza però dimenticare quelle precedenti, fenomeno noto come Catastrophic Forgetting. Quello che accade è che l'aumento dei pesi di una rete neurale causa la sovrascrizione dei pesi preesistenti, distruggendo così le connessioni necessarie a svolgere i compiti precedenti.
@@ -134,7 +123,6 @@ Per ovviare a questo problema si applica l'Elastic Weight Consolidation (EWC), c
 ## Dati Out-Of-Distribution (OOD)
 
 Il problema di dati Out-Of-Distribution si verifica quando la distribuzione statistica dei dati di addestramento differisce significativamente dai dati su cui il sistema opera in applicazioni reali.
-
 ### Explainability Formale
 
 L'Explainability Formale raggruppa le tecniche che consentono ad un sistema di 
