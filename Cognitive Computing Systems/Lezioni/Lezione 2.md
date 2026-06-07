@@ -8,17 +8,16 @@ RIASSUNTO: [[Lezione 2 - Riassunto]]
 ![[Pasted image 20260402183240.png]]
 
 ![[Pasted image 20260402183258.png]]
-
 Vediamo adesso tre elementi che ci hanno portato ad avere l'esigenza di un nuovo paradigma di programmazione, ossia quello cognitivo.
 
-Primo: Big Data
 ![[Pasted image 20260402183432.png]]
+Primo: i big data
 
-Secondo: Migliorare l'interazione tra uomo e macchina
 ![[Pasted image 20260402183502.png]]
+Secondo: migliorare l'interazione tra uomo e macchina
 
-Terzo: I sistemi cognitivi apprendono similmente a come fa un essere umano
 ![[Pasted image 20260402183559.png]]
+Terzo: i sistemi cognitivi apprendono similmente a come fa un essere umano
 
 ![[Pasted image 20260402183631.png]]
 

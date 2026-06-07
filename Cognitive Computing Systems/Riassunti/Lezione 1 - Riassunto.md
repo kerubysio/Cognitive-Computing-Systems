@@ -1,3 +1,4 @@
+Originale: [[Lezione 1]]
 Utile: https://www.ibm.com/think/topics/cognitive-computing-vs-ai
 
 ---
