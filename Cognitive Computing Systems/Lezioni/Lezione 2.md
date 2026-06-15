@@ -43,10 +43,14 @@ Il successo di Watson è stato reso possibile dall'architettura **DeepQA**, una 
 ![[Pasted image 20260402185620.png]]
 
 ![[Pasted image 20260402185733.png]]
-L'architettura **DeepQA** rivoluziona il concetto di risposta automatica trasformandolo da una semplice ricerca lineare in un complesso processo di generazione e valutazione di ipotesi massicciamente parallelizzato. Invece di cercare una singola "parola chiave" che porti a un'unica risposta, il sistema affronta l'incertezza del linguaggio naturale attraverso tre pilastri computazionali.
+> L'architettura **DeepQA** rivoluziona il concetto di risposta automatica trasformandolo da una semplice ricerca lineare in un complesso processo di generazione e valutazione di ipotesi massicciamente parallelizzato. Invece di cercare una singola "parola chiave" che porti a un'unica risposta, il sistema affronta l'incertezza del linguaggio naturale attraverso tre pilastri computazionali.
 
-In primo luogo, non si limita a un'unica analisi del testo, ma persegue contemporaneamente **molteplici interpretazioni della domanda**, riconoscendo che una frase può nascondere diversi significati o sfumature semantiche. Sulla base di queste diverse interpretazioni, il sistema procede a **generare un ampio spettro di risposte o ipotesi plausibili**. Questo passaggio non è selettivo, ma inclusivo: l'obiettivo è esplorare quante più possibilità il corpus di dati permetta.
-Una volta generate le ipotesi, la fase critica consiste nel **raccogliere e valutare prove concorrenti** per ciascuna di esse. Ogni prova viene analizzata per determinare se supporti o confuti l'ipotesi specifica, permettendo al sistema di sviluppare un livello di fiducia differenziato.
+- In primo luogo, analizza contemporaneamente **molteplici interpretazioni della domanda**, riconoscendo che una frase può nascondere diversi significati o sfumature semantiche.
+	
+- Sulla base di queste diverse interpretazioni, il sistema procede a **generare un ampio spettro di risposte o ipotesi plausibili**.
+  Questo passaggio non è selettivo, ma inclusivo: l'obiettivo è esplorare quante più possibilità il corpus di dati permetta.
+	
+- Infine, la fase critica consiste nel **raccogliere e valutare prove concorrenti** per ciascuna di esse. Ogni prova viene analizzata per determinare se supporti o confuti l'ipotesi specifica, permettendo al sistema di sviluppare un livello di fiducia differenziato.
 
 In sintesi, DeepQA non "trova" la risposta, ma costruisce statisticamente la credibilità di diverse opzioni per selezionare quella con il supporto statistico più solido.
 
@@ -65,8 +69,7 @@ Per essere considerato efficace, il sistema deve soddisfare quattro requisiti op
     
 - **Tempi di Risposta Rapidi**: In contesti come il gioco di Jeopardy!, ma anche nel supporto decisionale professionale, la precisione e la confidenza devono essere prodotte in tempi brevissimi (spesso meno di 3 secondi).
 
-
-L'implementazione di questi obiettivi avviene tramite l'architettura **DeepQA**, che integra diverse tecnologie di IA: dall'elaborazione del linguaggio naturale (NLP) al recupero delle informazioni, fino all'apprendimento automatico. La filosofia alla base di DeepQA è che la vera intelligenza non derivi da un singolo algoritmo perfetto, ma dall'integrazione di molti algoritmi diversi che analizzano i dati da prospettive differenti, collaborando per costruire un consenso basato sulle evidenze disponibili.
+> La filosofia alla base di DeepQA è che la vera intelligenza non derivi da un singolo algoritmo perfetto, ma dall'integrazione di molti algoritmi diversi che analizzano i dati da prospettive differenti, collaborando per costruire un consenso basato sulle evidenze disponibili.
 
 ![[Pasted image 20260402185958.png]]
 Il confronto tra l'utilizzo di un **Motore di Ricerca (Search Engine)** e un **Sistema di Risposta Esperto (Expert Q&A)** evidenzia un cambio di paradigma nel modo in cui un decisore umano ottiene informazioni per compiere scelte consapevoli.
