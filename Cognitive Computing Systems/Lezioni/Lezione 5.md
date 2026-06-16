@@ -1,6 +1,7 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
 DATA: 27/03/2026
 FONTE: L13-IL PROCESSO DI COSTRUZIONE DI UNA APP COGNITIVA.pdf
+RIASSUNTO: [[Lezione 5 - Riassunto]]
 
 ---
 
@@ -13,9 +14,7 @@ Il nucleo operativo consiste nell'individuare le domande chiave a cui il sistema
 Il ciclo si conclude con le fasi di training e testing, fondamentali per addestrare il modello e verificare che le risposte siano accurate e pertinenti rispetto agli obiettivi iniziali.
 
 ![[Pasted image 20260410174256.png]]
-
-La definizione dell'obiettivo è la fase cruciale in cui si stabilisce lo scopo primario del sistema cognitivo in ambito sanitario. Gli obiettivi possono variare dal supporto diretto al cittadino, aiutandolo a ottimizzare salute e benessere tramite informazioni e social support, all'incentivazione di un ruolo proattivo nella gestione della propria cura (self-care).
-Il sistema può inoltre fungere da strumento decisionale per verificare l'efficacia e la convenienza dei piani terapeutici selezionati per i pazienti, oppure operare come risorsa educativa avanzata per gli studenti di medicina, integrando e approfondendo le conoscenze acquisite durante le loro specializzazioni.
+La definizione dell'obiettivo è la fase cruciale in cui si stabilisce lo scopo primario del sistema cognitivo. 
 
 ![[Pasted image 20260410174455.png]]
 
@@ -68,8 +67,7 @@ La preparazione garantisce che tutti i dati siano leggibili, ricercabili e compr
 ![[Pasted image 20260410175905.png]]
 
 La fase finale di Training e Testing è volta al miglioramento dell'accuratezza dei modelli attraverso l'ottimizzazione di tre metriche fondamentali: Recall, Precision e Accuracy.
-Per migliorare la Recall (capacità di recupero), si interviene aggiungendo nuovi contenuti se vi è una carenza di dati o revisionando la "ground truth", ossia le 
-conoscenze di base del sistema cognitivo, e gli artefatti di interazione, ossia la cronologia delle interazioni tra il sistema cognitivo e l'utente.
+Per migliorare la Recall (capacità di recupero), si interviene aggiungendo nuovi contenuti se vi è una carenza di dati o revisionando la "ground truth", ossia le conoscenze di base del sistema cognitivo, e gli artefatti di interazione, ossia la cronologia delle interazioni tra il sistema cognitivo e l'utente.
 Per la Precision (precisione delle risposte), è necessario gestire le varianti delle domande integrando ontologie e glossari specifici.
 Infine, per elevare l'Accuracy generale, si colmano le lacune concettuali del sistema, garantendo che l'applicazione cognitiva non solo trovi le informazioni, ma le interpreti correttamente nel contesto del dominio scelto.
 

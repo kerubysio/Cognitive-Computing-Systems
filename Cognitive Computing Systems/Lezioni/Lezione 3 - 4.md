@@ -1,6 +1,7 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
 DATA: 17/03/2026 e 20/03/2026
 FONTE: L8 EVOLUTION FROM DEEPQA TO WATSON DEVELOPER CLOUD 24-3-2024 -1.pdf (slide 45 e successive)
+RIASSUNTO: [[Lezione 3-4 - Riassunto]]
 
 ---
 
@@ -119,8 +120,6 @@ L'architettura completa integra le capacità di elaborazione profonda con un liv
 - **Visual Recognition**: permette al sistema di interpretare contenuti visivi (immagini o screenshot), integrando queste informazioni nell'analisi della domanda.
     
 - **Language Translator**: gestisce la traduzione automatica per operare in ambienti multilingua.
-    
-A livello di pipeline interna, il sistema mantiene la distinzione tra il percorso rapido delle **Pre-defined Responses** (risposte pre-configurate) e il percorso analitico di **Hypothesis Generation and Scoring**. Quest'ultimo utilizza il processo di **Document Conversion** per alimentare costantemente il **Corpus** con nuovi documenti (Docs), garantendo che la fase di **Retrieve** possa attingere a una base di conoscenza sempre aggiornata. Il modulo di **Final Merger and Ranking** assicura infine che la risposta erogata sia quella statisticamente più solida tra tutte le ipotesi generate.
 
 ---
 

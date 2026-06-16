@@ -1,5 +1,6 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
 DATA: 10/04/2026
+RIASSUNTO: [[Lezione 6 - Riassunto]]
 
 ---
 
