@@ -1,6 +1,7 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
 DATA: 05/05/2026
 FONTE: capitolo 15.03 e 15.04
+RIASSUNTO: [[Lezione 12 - Riassunto]]
 
 ---
 

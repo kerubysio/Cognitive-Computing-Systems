@@ -1,6 +1,7 @@
 MATERIA: [[Cognitive Computing Systems (6 CFU)]]
 DATA: 08/05/2026
 FONTE: capitolo 15.5 e successivi
+RIASSUNTO: [[Lezione 13 - Riassunto]]
 
 --- 
 
@@ -109,10 +110,10 @@ La compressione dello spazio lineare tramite tecniche di riduzione della dimensi
 Ad esempio, la formazione spontanea di raggruppamenti geometrici distinti, noti come _clusters_, suggerisce la presenza di classi di informazioni ben separate all'interno dei dati non etichettati, rendendo opportuno l'eventuale impiego futuro di un modello di classificazione supervisionata.
 
 ![[Pasted image 20260519204617.png]]
-L'addestramento degli estimatori su dataset massicci caratterizzati da un numero elevato di dimensioni può richiedere tempi di calcolo proibitivi, a causa della complessità matematica intrinseca nel tentare di concettualizzare spazi iperdimensionali. Attraverso la compressione dello spazio delle feature, questa tecnica permette di eliminare o combinare tra loro gli attributi fortemente correlati, riducendo la ridondanza informativa e migliorando sensibilmente le performance e la velocità di training delle reti; tuttavia, la contrazione geometrica delle variabili comporta un compromesso strutturale, poiché la rimozione di parte dell'informazione originaria potrebbe ridurre l'accuratezza predittiva complessiva del modello finale.
+Attraverso la compressione dello spazio delle feature, questa tecnica permette di eliminare o combinare tra loro gli attributi fortemente correlati, riducendo la ridondanza informativa e migliorando sensibilmente le performance e la velocità di training delle reti; tuttavia, la contrazione geometrica delle variabili comporta un compromesso strutturale, poiché la rimozione di parte dell'informazione originaria potrebbe ridurre l'accuratezza predittiva complessiva del modello finale.
 
 ![[Pasted image 20260519204645.png]]
-Per capire quello che stiamo dicendo, analizziamo il Dataset Digits. Il caricamento del Digits dataset viene finalizzato ignorando momentaneamente le etichette reali delle classi (_labels_) per simulare un approccio non supervisionato, applicando la riduzione della dimensionalità al fine di proiettare e visualizzare la struttura geometrica dei dati all'interno di uno spazio bidimensionale. Per abilitare il rendering dei grafici direttamente nel Jupyter Notebook, viene lanciato in apertura il comando magico `%matplotlib inline`. L'importazione e l'inizializzazione dell'archivio avvengono richiamando la funzione `load_digits` dal modulo `sklearn.datasets` e assegnando l'oggetto risultante alla variabile `digits`, strutturando così la base dati iperdimensionale che verrà successivamente compressa per mappare le relazioni visive tra le diverse cifre scritte a mano.
+Per capire quello che stiamo dicendo, analizziamo il Dataset Digits. Il caricamento del Digits dataset viene finalizzato ignorando momentaneamente le etichette reali delle classi (_labels_) per simulare un approccio non supervisionato, applicando la riduzione della dimensionalità al fine di proiettare e visualizzare la struttura geometrica dei dati all'interno di uno spazio bidimensionale. 
 
 ![[Pasted image 20260519205032.png]]
 L'istanza dell'algoritmo di riduzione della dimensionalità viene creata importando la classe `TSNE` dal modulo `sklearn.manifold`. L'algoritmo t-SNE (t-distributed Stochastic Neighbor Embedding) rappresenta una tecnica avanzata e non lineare particolarmente efficace per proiettare dataset ad alta dimensionalità in spazi bidimensionali o tridimensionali, preservando al contempo le relazioni di prossimità locale tra i campioni (non ci interessano i dettagli di questo algoritmo).
